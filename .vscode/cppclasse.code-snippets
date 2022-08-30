@@ -1,0 +1,39 @@
+{
+	// Place your snippets for cpp here. Each snippet is defined under a snippet name and has a prefix, body and 
+    // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+    // same ids are connected.
+    // Example:
+    // "Print to console": {
+    //     "prefix": "log",
+    //     "body": [
+    //         "console.log('$1');",
+    //         "$2"
+    //     ],
+	//     "description": "Log output to console"
+	// }
+	"Create class" : {
+		"prefix" : "class",
+		"body" :[
+			"#pragma once\n",
+			"# include <iostream>\n",
+			"// ATTENTION : utiliser la forme canonique de Coplien !!\n",
+			"class $2\t\t\t\t\t// classe mere/abstraite/concrete/interface",
+			"{",
+			"",
+			"\tpublic :",
+			"\t\t$2(void);\t\t\t\t\t// constructeur par défaut",
+			"\t\t$2($2 const &copy);\t\t\t\t\t// constructeur par copie",
+			"\t\t$2(std::string name);\t\t\t\t\t// constructeur by string",
+			"\t\t~$2(void);\t\t\t\t\t// destructeur",
+			"\n\t\t$2 &operator=($2 const &rhs);\t\t\t\t\t// surcharge d'assignation",
+			"\n\t\tstd::string const\t&getName(void) const;",
+			"",
+			"\tprivate :",
+			"\t\t$0",
+			"};\n",
+			"$2 &operator<<(std::ostream &o, $2 const &rhs);",
+		],
+		"description" : "create a class in cpp"
+	}
+}
