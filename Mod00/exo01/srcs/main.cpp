@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 18:16:39 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/24 18:16:40 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/08/30 22:46:12 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main( void ) {
 			if (a == 0) {
 				std::cout << "Vous n'avez aucun contact.." << std::endl; }
 			else {
-				std::cout << "Ok y'en a mais je sais pas afficher" << std::endl; } }
+				if (pb.search(a)) {
+					break; } } }
 		else if (input == "EXIT" || std::cin.eof() == 1) {
 			x = 1; }
 		else

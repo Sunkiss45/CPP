@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 14:34:41 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/29 14:34:43 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/08/31 01:08:34 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include <iomanip>
+# include <sstream>
+# include <string>
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
@@ -24,6 +27,8 @@ class Contact					// classe mere/abstraite/concrete/interface
 		~Contact(void);					// destructeur
 
 		void	takeinfo(int i);
+		void	displaygen(void);
+		void	displaycont(void);
 
 	private :
 		int			_ind;
@@ -32,5 +37,6 @@ class Contact					// classe mere/abstraite/concrete/interface
 		std::string	_nick;
 		std::string	_phone;
 		std::string	_dark;
+		void		_displayline(std::string str);
 
 };

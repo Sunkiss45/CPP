@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebarguil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 20:44:09 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/29 20:44:10 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/08/31 01:21:51 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,28 @@ void	Contact::takeinfo(int i) {
 	//std::cout << i << buff[0] << buff[1] << buff[2] << buff[3] << buff[4] << std::endl;
 	//std::cout << this->_ind << this->_first << this->_last << this->_nick << this->_phone << this->_dark << std::endl;
 	return; }
+
+void	Contact::displaygen(void) {
+	std::cout << "+" << std::setw(10) << this->_ind << "|";
+	this->_displayline(this->_first);
+	std::cout << "|";
+	this->_displayline(this->_last);
+	std::cout << "|";
+	this->_displayline(this->_nick);
+	std::cout << "+" << std::endl; }
+
+void	Contact::displaycont(void) {
+	std::cout << std::endl;
+	std::cout << "Index : " << this->_ind << std::endl;
+	std::cout << "Prénom : " << this->_first << std::endl;
+	std::cout << "Nom : " << this->_last << std::endl;
+	std::cout << "Surnom : " << this->_nick << std::endl;
+	std::cout << "Numéro de téléphone : " << this->_phone << std::endl;
+	std::cout << "Petit secret : " << this->_dark << std::endl << std::endl; }
+
+void	Contact::_displayline(std::string str) {
+	if (str.length() < 11) {
+		std::cout << std::setw(10) << str; }
+	else {
+		str.resize(9);
+		std::cout << str << "."; } }
