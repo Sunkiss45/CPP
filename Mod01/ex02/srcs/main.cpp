@@ -6,17 +6,17 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 16:50:15 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/31 19:42:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:59:15 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
 
 int	main() {
-	std::cout << std::endl;
+	std::string	str = "HI THIS IS BRAIN";
+	std::string	*strptr = &str;
+	std::string	&strref = str;
 
-	Zombie	*Horde = zombieHorde(4, "Francis");
-	std::cout << std::endl;
-
-	delete [] Horde;
+	std::cout << &str << std::endl << strptr << std::endl << &strref << std::endl;
+	std::cout << str << std::endl << *strptr << std::endl << strref << std::endl;
 	return 0; }

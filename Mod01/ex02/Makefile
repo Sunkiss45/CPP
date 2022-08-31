@@ -6,24 +6,20 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 17:29:35 by ebarguil          #+#    #+#              #
-#    Updated: 2022/08/31 19:41:03 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/08/31 19:51:47 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
-
-INC		=	includes
+NAME	=	ref
 
 CC		=	c++
-CFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
+CFLAGS	=	-std=c++98 -Wall -Wextra -Werror
 CFA		=	-fsanitize=address -g3
 RM		=	/usr/bin/rm -rf
 
 vpath %.cpp srcs
 
 SRC		=	srcs/main.cpp \
-			srcs/Zombie.cpp \
-			srcs/zombieHorde.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 

@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 17:29:35 by ebarguil          #+#    #+#              #
-#    Updated: 2022/08/31 17:33:14 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/08/31 19:43:03 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ INC		=	includes
 
 CC		=	c++
 CFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
+CFA		=	-fsanitize=address -g3
 RM		=	/usr/bin/rm -rf
 
 vpath %.cpp srcs
