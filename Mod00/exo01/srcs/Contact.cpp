@@ -61,8 +61,6 @@ void	Contact::takeinfo(int i) {
 	this->_phone = buff[3];
 	this->_dark = buff[4];
 	std::cout << "Informations enregistrées !" << std::endl << std::endl;
-	//std::cout << i << buff[0] << buff[1] << buff[2] << buff[3] << buff[4] << std::endl;
-	//std::cout << this->_ind << this->_first << this->_last << this->_nick << this->_phone << this->_dark << std::endl;
 	return; }
 
 void	Contact::displaygen(void) {
