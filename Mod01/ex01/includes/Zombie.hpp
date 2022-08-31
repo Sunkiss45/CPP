@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 14:08:46 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/31 19:09:23 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/08/31 19:32:29 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ class Zombie					// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		Zombie(std::string name);					// constructeur par string
+		Zombie(void);					// constructeur par defaut
 		~Zombie(void);					// destructeur
 
+		void	names(std::string name);
 		void	annonce(void) const;
 
 	private :
 		std::string	_name;
 };
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie	*zombieHorde(int n, std::string name);

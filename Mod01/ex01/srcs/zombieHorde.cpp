@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 14:08:46 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/08/31 19:09:23 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/08/31 18:55:02 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/08/31 19:33:28 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Zombie.hpp"
 
-# include <iostream>
-
-// ATTENTION : utiliser la forme canonique de Coplien !!
-
-class Zombie					// classe mere/abstraite/concrete/interface
-{
-
-	public :
-		Zombie(std::string name);					// constructeur par string
-		~Zombie(void);					// destructeur
-
-		void	annonce(void) const;
-
-	private :
-		std::string	_name;
-};
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+Zombie  *zombieHorde(int n, std::string name) {
+	Zombie  *Horde = new Zombie[n];
+	std::cout << std::endl;
+	for (int i = 0; i < n; i++) {
+		Horde[i].names(name);
+		Horde[i].annonce(); }
+	return (Horde); }
