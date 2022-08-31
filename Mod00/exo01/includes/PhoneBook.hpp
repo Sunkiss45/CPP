@@ -15,7 +15,6 @@
 # include <iostream>
 # include <iomanip>
 # include <sstream>
-# include <string>
 # include "Contact.hpp"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
