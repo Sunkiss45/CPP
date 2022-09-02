@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/24 17:29:35 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/02 14:39:47 by ebarguil         ###   ########.fr        #
+#    Created: 2022/09/02 14:37:14 by ebarguil          #+#    #+#              #
+#    Updated: 2022/09/02 14:40:04 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	zombie
+NAME	=	attacks
 
 INC		=	includes
 
@@ -22,8 +22,9 @@ RM		=	/usr/bin/rm -rf
 vpath %.cpp srcs
 
 SRC		=	srcs/main.cpp \
-			srcs/Zombie.cpp \
-			srcs/zombieHorde.cpp \
+			srcs/HumanA.cpp \
+			srcs/HumanB.cpp \
+			srcs/Weapon.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 

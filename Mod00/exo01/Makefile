@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:06:46 by ebarguil          #+#    #+#              #
-#    Updated: 2022/08/31 17:32:48 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/02 14:39:36 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,6 @@ all			:	obj $(NAME)
 
 $(NAME)		:	$(OBJ)
 				$(CC) $(CFLAGS) -o $(NAME) $(SRC)
-
 
 obj			:
 				@if [ ! -d "./objs" ]; then\

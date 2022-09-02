@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 14:08:46 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/02 20:34:58 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/02 15:14:25 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/02 22:01:19 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
-class Zombie					// classe mere/abstraite/concrete/interface
+class Weapon					// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		Zombie(std::string name);					// constructeur par string
-		~Zombie(void);					// destructeur
+		Weapon(std::string type);					// constructeur by string
+		~Weapon(void);					// destructeur
 
-		void	annonce(void) const;
+		std::string const	&getType(void) const;
+		void 				setType(std::string weapon);
 
 	private :
-		std::string	_name;
-};
+		std::string	_type;
 
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
+};

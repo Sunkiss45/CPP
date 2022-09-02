@@ -5,26 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 16:50:15 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/02 14:36:28 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/02 15:14:03 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/02 21:29:09 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int	main() {
-	std::string	str = "HI THIS IS BRAIN";
-	std::string	*strptr = &str;
-	std::string	&strref = str;
-	std::cout << std::endl;
+	{
+		Weapon	club = Weapon("crude spiked club");
 
-	std::cout << "Address of :" << std::endl;
-	std::cout << "string - " << &str << std::endl;
-	std::cout << "pointer - " << strptr << std::endl;
-	std::cout << "reference - " << &strref << std::endl << std::endl;
+		HumanA	bob("Bob", club);
+		std::cout << std::endl;
+		bob.attack();
+		club.setType("some other type of club");
+		bob.attack();
+		std::cout << std::endl;
+	}
+	{
+		Weapon	club = Weapon("crude spiked club");
 
-	std::cout << "Contents of :" << std::endl;
-	std::cout << "string - " << str << std::endl;
-	std::cout << "pointer - " << *strptr << std::endl;
-	std::cout << "reference - " << strref << std::endl;
-	return 0; }
+		HumanB	jim("Jim");
+		std::cout << std::endl;
+		jim.attack();
+		jim.setWeapon(club);
+		jim.attack();
+		club.setType("some other type of club");
+		jim.attack();
+		std::cout << std::endl;
+	}
+	return 0;
+}

@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 17:29:35 by ebarguil          #+#    #+#              #
-#    Updated: 2022/08/31 19:51:47 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/02 14:41:15 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,17 @@ SRC		=	srcs/main.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 
-
 all			:	obj $(NAME)
 
 $(NAME)		:	$(OBJ)
 				$(CC) $(CFLAGS) -o $(NAME) $(SRC)
 
 obj			:
-				mkdir -p objs
+				@if [ ! -d "./objs" ]; then\
+					echo "mkdir -p objs";\
+					mkdir -p objs;\
+				fi
+				@echo ""
 
 objs/%.o	:	%.cpp
 				$(CC) -o $@ -c $< $(CFLAGS)
