@@ -6,11 +6,11 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 17:55:46 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/03 19:17:21 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/03 19:57:50 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	harl
+NAME	=	harlFilter
 
 INC		=	includes
 
