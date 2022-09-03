@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:04:44 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/03 20:16:30 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/03 21:43:51 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	Harl::complain(std::string level) {
 	void	(Harl::*f[])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 	std::string	poss[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
+	// int	swi = 0;
 	// for (int i = 0; i <= 3; i++){
 	// 	if (swi) {
 	// 		(this->*f[i])(); }

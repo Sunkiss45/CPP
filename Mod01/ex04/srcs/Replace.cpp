@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 23:05:35 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/03 17:54:38 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/03 21:32:56 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ bool	Replace::open_infile(void) {
 	this->_ifs.open(this->_filename.c_str());
 	if (!this->_ifs.is_open()) {
 		return (false); }
-	this->_ifsbuf.assign(std::istreambuf_iterator<char>(this->_ifs), std::istreambuf_iterator<char>());
+	try {
+		this->_ifsbuf.assign(std::istreambuf_iterator<char>(this->_ifs), std::istreambuf_iterator<char>()); }
+	catch (std::exception e) {
+		return (false);	} 
 	return (true); }
 
 bool	Replace::create_outfile(void) {

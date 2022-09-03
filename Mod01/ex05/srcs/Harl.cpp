@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:04:44 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/03 19:54:23 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/03 21:36:59 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	Harl::complain(std::string level) {
 
 	for (int i = 0; i <= 3; i++){
 		if (poss[i] == level) {
-			(this->*f[i])(); } }
+			(this->*f[i])(); 
+			break; } }
 	return; }
 
 void	Harl::_debug(void) {
