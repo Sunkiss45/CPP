@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 23:05:35 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/03 14:49:41 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/03 17:54:38 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Replace::launch(void) {
 		std::cout << "Error while creating output file.." << std::endl;
 		return ; }
 	this->_ofs << this->_ifsbuf;
-    this->_ofs.close();
+	this->_ofs.close();
 	return; }
 
 bool	Replace::open_infile(void) {
