@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:04:44 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/03 20:04:53 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/03 20:16:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,25 @@ Harl::~Harl(void) {					// destructeur
 void	Harl::complain(std::string level) {
 	void	(Harl::*f[])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 	std::string	poss[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	int	swi = 0;
 
-	for (int i = 0; i <= 3; i++){
-		if (swi) {
-			(this->*f[i])(); }
+	// for (int i = 0; i <= 3; i++){
+	// 	if (swi) {
+	// 		(this->*f[i])(); }
+	// 	if (poss[i] == level) {
+	// 		swi = 1;
+	// 		(this->*f[i])(); } }
+
+	int i;
+	for (i = 0; i <= 3; i++){
 		if (poss[i] == level) {
-			swi = 1;
-			(this->*f[i])(); } }
+			break; } }
+	
+	switch (i) {
+		case 0 : (this->*f[0])();
+		case 1 : (this->*f[1])();
+		case 2 : (this->*f[2])();
+		case 3 : (this->*f[3])(); }
+
 	return; }
 
 void	Harl::_debug(void) {
