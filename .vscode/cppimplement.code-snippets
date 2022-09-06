@@ -52,7 +52,7 @@
 			"//-------------------------   NON MEMBER FUNCTIONS   -------------------------//",
 			"",
 			"std::ostream\t\t&operator<<(std::ostream &out, $2 const &rhs) {",
-			"out << rhs.ATTENTION() << \"say something here\" << rhs.ATTENTION();",
+			"\tout << rhs.ATTENTION() << \"say something here\" << rhs.ATTENTION();",
 			"\treturn(out); }",
 			"",			
 		],

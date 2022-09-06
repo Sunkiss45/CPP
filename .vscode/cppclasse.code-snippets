@@ -32,7 +32,7 @@
 			"\tprivate :",
 			"\t\t$0",
 			"};\n",
-			"$2 &operator<<(std::ostream &o, $2 const &rhs);",
+			"std::ostream &operator<<(std::ostream &o, $2 const &rhs);",
 		],
 		"description" : "create a class in cpp"
 	}
