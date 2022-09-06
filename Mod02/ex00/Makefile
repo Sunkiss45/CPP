@@ -6,11 +6,11 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/05 16:59:18 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/05 16:59:28 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/06 11:16:35 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	harlFilter
+NAME	=	fixed
 
 INC		=	includes
 
@@ -22,7 +22,7 @@ RM		=	/usr/bin/rm -rf
 vpath %.cpp srcs
 
 SRC		=	srcs/main.cpp \
-			srcs/Harl.cpp \
+			srcs/Fixed.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 

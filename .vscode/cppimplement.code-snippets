@@ -13,7 +13,7 @@
 	//     "description": "Log output to console"
 	// }
 	"Create implementation" : {
-		"prefix" : "implement",
+		"prefix" : "imple",
 		"body" :[
 			"#include \"$2.hpp\"",
 			"",
