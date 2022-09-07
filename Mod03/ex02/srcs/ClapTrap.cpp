@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:55:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/07 13:49:11 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:49:37 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ ClapTrap::ClapTrap(ClapTrap const &copy) {					// constructeur par copie
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _health(10), _energy(10), _damage(0) {					// constructeur by string
 	std::cout << "ClapTrap String constructor called." << std::endl;
+	return; }
+
+ClapTrap::ClapTrap(std::string name, int HP, int EP, int AD) : _name(name), _health(HP), _energy(EP), _damage(AD) {
+	std::cout << "ClapTrap Default constructor called." << std::endl;
 	return; }
 
 ClapTrap::~ClapTrap(void) {					// destructeur
@@ -48,6 +52,9 @@ std::string const		&ClapTrap::getName() const {
 
 int const		&ClapTrap::getEnergy() const {
 	return(this->_energy); }
+
+int const		&ClapTrap::getDamage() const {
+	return(this->_damage); }
 
 //---------------------------   MEMBER FUNCTIONS   ---------------------------//
 

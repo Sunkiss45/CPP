@@ -6,48 +6,49 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 17:55:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/07 10:58:50 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:28:41 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main() {
 	ClapTrap	pikachu;
-	ClapTrap	bulbizarre("Bulbizarre");
-	ClapTrap	pichu(pikachu);
-	ClapTrap	tortipouss("Tortipouss");
-	ClapTrap	poussifeu("Poussifeu");
+	ScavTrap	raichu;
+	ScavTrap	pichu_s("Pichu shiny");
 
-	std::cout << std::endl;
+	std::cout << std::endl << std::endl;
+
+	pikachu.beRepaired(5);
+	raichu.beRepaired(20);
+	pichu_s.beRepaired(50);
+	
 	std::cout << std::endl;
 
-	bulbizarre.attack("Pichu");
-	pichu.takeDamage(21);
-	pikachu.attack("Pichu");
-	pichu.takeDamage(1000000);
+	pikachu.attack(raichu.getName());
+	raichu.takeDamage(pikachu.getDamage());
+	pichu_s.attack(raichu.getName());
+	raichu.takeDamage(pichu_s.getDamage());
 
-	std::cout << std::endl;
-	while (bulbizarre.getEnergy()) {
-		bulbizarre.beRepaired(1); }
-	bulbizarre.beRepaired(1);
-	while (pikachu.getEnergy()) {
-		pikachu.attack("Bulbizarre"); }
-	pikachu.attack("Bulbizarre");
-	bulbizarre.takeDamage(42);
-	bulbizarre.beRepaired(1);
-	tortipouss.attack("Pikachu");
-	pikachu.takeDamage(100);
+	raichu.attack("Pikachu & Pichu shiny");
+	pikachu.takeDamage(raichu.getDamage());
+	pichu_s.takeDamage(raichu.getDamage());
 
 	std::cout << std::endl;
 
-	poussifeu.beRepaired(140);
-	tortipouss.attack("Poussifeu");
-	poussifeu.takeDamage(100);
-	poussifeu.attack("Tortipouss");
-	tortipouss.takeDamage(1000000);
+	pichu_s.guardGate();
+	int i = 5;
+	while (i--) {
+		pichu_s.attack(raichu.getName()); }
+	raichu.takeDamage(pichu_s.getDamage() * (4 - i));
+	raichu.attack(raichu.getName());
+	raichu.takeDamage(raichu.getDamage());
 
 	std::cout << std::endl;
 
-	std::cout << poussifeu.getName() << " is the winner ! (not op at all)" << std::endl << std::endl << std::endl;;
+	std::cout << pichu_s.getName() << " is the winner ! (by misstake of raichu..)" << std::endl;
+
+	std::cout << std::endl << std::endl;
+
 	return 0; }
