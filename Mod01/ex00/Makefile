@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 17:29:35 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/02 14:39:15 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/07 17:50:46 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	=	zombie
 
 INC		=	includes
 
-CC		=	c++
-CFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
+CXX		=	c++
+CXFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
 CFA		=	-fsanitize=address -g3
 RM		=	/usr/bin/rm -rf
 
@@ -31,7 +31,7 @@ OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 all			:	obj $(NAME)
 
 $(NAME)		:	$(OBJ)
-				$(CC) $(CFLAGS) -o $(NAME) $(SRC)
+				$(CXX) $(CXFLAGS) -o $(NAME) $(SRC)
 
 obj			:
 				@if [ ! -d "./objs" ]; then\
@@ -41,7 +41,7 @@ obj			:
 				@echo ""
 
 objs/%.o	:	%.cpp
-				$(CC) -o $@ -c $< $(CFLAGS)
+				$(CXX) -o $@ -c $< $(CXFLAGS)
 
 clean		:
 				$(RM) $(OBJ)
@@ -51,7 +51,7 @@ fclean		:	clean
 				$(RM) $(NAME)
 
 fsa			:	fclean obj $(OBJ)
-				$(CC) $(CFLAGS) $(CFA) -o $(NAME) $(SRC)
+				$(CXX) $(CXFLAGS) $(CFA) -o $(NAME) $(SRC)
 
 re			:	fclean all
 

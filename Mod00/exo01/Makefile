@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 17:06:46 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/02 14:39:36 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/07 17:51:36 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME	=	phonebook
 
 INC		=	includes
 
-CC		=	c++
-CFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
+CXX		=	c++
+CXFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
 RM		=	/usr/bin/rm -rf
 
 vpath %.cpp srcs
@@ -30,7 +30,7 @@ OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 all			:	obj $(NAME)
 
 $(NAME)		:	$(OBJ)
-				$(CC) $(CFLAGS) -o $(NAME) $(SRC)
+				$(CXX) $(CXFLAGS) -o $(NAME) $(SRC)
 
 obj			:
 				@if [ ! -d "./objs" ]; then\
@@ -40,7 +40,7 @@ obj			:
 				@echo ""
 
 objs/%.o	:	srcs/%.cpp
-				$(CC) -o $@ -c $< $(CFLAGS)
+				$(CXX) -o $@ -c $< $(CXFLAGS)
 
 clean		: 
 				$(RM) $(OBJ)
