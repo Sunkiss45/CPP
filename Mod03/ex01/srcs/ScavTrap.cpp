@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 09:45:06 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/07 13:48:18 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:54:43 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ScavTrap::attack(const std::string &target) {
 	std::cout << "ScavTrap " << this->_name << " attacks " << target << ", causing " << this->_damage << " points of damage ! Energy left : " << this->_energy << std::endl;
 	return; }
 
-void	ScavTrap::guardGate(void) const {
+void	ScavTrap::guardGate(void) {
 	if (this->_health == 0) {
 		std::cout << "ScavTrap " << this->_name << " is dead.. He can't use special abilities !" << std::endl; 
 		return; }

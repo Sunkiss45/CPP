@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/07 09:45:44 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/07 10:47:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/07 17:54:46 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ class ScavTrap : public ClapTrap				// classe mere/abstraite/concrete/interface
 		ScavTrap &operator=(ScavTrap const &rhs);					// surcharge d'assignation
 
 		void	attack(const std::string &target);
-		void	guardGate(void) const;
+		void	guardGate(void);
 
 };
