@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 12:09:32 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/09 14:17:49 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/09 12:02:36 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/09 18:01:47 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
-# include "WrongAnimal.hpp"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
-class WrongCat : public WrongAnimal					// classe mere/abstraite/concrete/interface
+class Animal					// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		WrongCat(void);					// constructeur par défaut
-		WrongCat(WrongCat const &copy);					// constructeur par copie
-		~WrongCat(void);					// destructeur
+		Animal(void);					// constructeur par défaut
+		Animal(Animal const &copy);					// constructeur par copie
+		virtual ~Animal(void);					// destructeur
 
-		WrongCat &operator=(WrongCat const &rhs);					// surcharge d'assignation
+		Animal &operator=(Animal const &rhs);					// surcharge d'assignation
 
 		std::string const	&getType(void) const;
 
-		void	makeSound(void) const;
-	
+		virtual void	makeSound(void) const = 0;
+
+	protected :
+		std::string	_type;
 };

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/09 14:17:28 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/09 14:27:01 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/09 14:59:26 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/09 16:34:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,20 @@
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
-class WrongAnimal					// classe mere/abstraite/concrete/interface
+class Brain					// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		WrongAnimal(void);					// constructeur par défaut
-		WrongAnimal(WrongAnimal const &copy);					// constructeur par copie
-		virtual ~WrongAnimal(void);					// destructeur
+		Brain(void);					// constructeur par défaut
+		Brain(Brain const &copy);					// constructeur par copie
+		~Brain(void);					// destructeur
 
-		WrongAnimal &operator=(WrongAnimal const &rhs);					// surcharge d'assignation
+		Brain &operator=(Brain const &rhs);					// surcharge d'assignation
 
-		std::string const	&getType(void) const;
+		std::string const	getIdeas(int n) const;
+		void				setIdeas(std::string const str, int n);
 
-		void	makeSound(void) const;
+	private :
+		std::string	_ideas[100];
 
-	protected :
-		std::string	_type;
-		
 };

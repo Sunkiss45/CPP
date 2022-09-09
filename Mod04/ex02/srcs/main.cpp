@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 12:02:27 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/09 18:00:17 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/09 18:05:04 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ int	main() {
 
 	delete j;//should not create a leak
 	delete i;
+
+
+	// Animal	*rdm1 = new Animal();
+	// Animal	rdm2;
+
+	// rdm1->makeSound();
+	// rdm2.makeSound();
+
 
 	// Animal	*ani[4];
 
