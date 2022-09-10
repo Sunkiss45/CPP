@@ -6,19 +6,11 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:54:30 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 15:46:25 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:44:20 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-
-#define RESET "\e[0m"
-#define RED "\e[0;31m"
-#define GREEN "\e[0;32m"
-#define YELLOW "\e[0;33m"
-#define BLUE "\e[0;34m"
-#define PURPLE "\e[0;35m"
-#define CYAN "\e[0;36m"
 
 int	main() {
 
@@ -81,7 +73,7 @@ int	main() {
 	{
 		try {
 			Bureaucrat	richard("Richard", 151);
-			std::cout << YELLOW << richard << RESET << std::endl;}
+			std::cout << PURPLE << richard << RESET << std::endl;}
 		catch (std::exception &e) {
 			std::cout << RED << e.what() << RESET << std::endl; }
 	}
@@ -91,7 +83,7 @@ int	main() {
 	{
 		try {
 			Bureaucrat	richard("Richard", 0);
-			std::cout << YELLOW << richard << RESET << std::endl;}
+			std::cout << PURPLE << richard << RESET << std::endl;}
 		catch (std::exception &e) {
 			std::cout << RED << e.what() << RESET << std::endl; }
 	}
@@ -102,7 +94,7 @@ int	main() {
 		try {
 			Bureaucrat	richard("Richard", 150);
 			richard.downGrade();
-			std::cout << YELLOW << richard << RESET << std::endl;
+			std::cout << PURPLE << richard << RESET << std::endl;
 
 			std::cout << std::endl; }
 		catch (std::exception &e) {
@@ -115,21 +107,23 @@ int	main() {
 		try {
 			Bureaucrat	richard("Richard", 1);
 			richard.upGrade();
-			std::cout << YELLOW << richard << RESET << std::endl;
+			std::cout << PURPLE << richard << RESET << std::endl;
 
 			std::cout << std::endl; }
 		catch (std::exception &e) {
 			std::cout << RED << e.what() << RESET << std::endl; }
 	}
 
+
 	// std::cout << std::endl << std::endl;
 
 	// {
 	// 	try {
 	// 		Bureaucrat	nobody;
+	// 		std::cout << BLUE << nobody << RESET << std::endl;
 	// 		while (1) {
 	// 			nobody.downGrade();
-	// 			std::cout << YELLOW << nobody << RESET << std::endl; }
+	// 			std::cout << BLUE << nobody << RESET << std::endl; }
 
 	// 		std::cout << std::endl; }
 	// 	catch (std::exception &e) {

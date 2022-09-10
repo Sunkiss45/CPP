@@ -6,13 +6,14 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:59:05 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 19:38:23 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/10 18:41:10 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include "Form.hpp"
 
 #define RESET "\e[0m"
 #define RED "\e[0;31m"
@@ -23,6 +24,8 @@
 #define CYAN "\e[0;36m"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
+
+class Form;
 
 class Bureaucrat					// classe mere/abstraite/concrete/interface
 {
@@ -41,6 +44,7 @@ class Bureaucrat					// classe mere/abstraite/concrete/interface
 		void	upGrade(void);
 		void	downGrade(void);
 		void	checkGrade(void);
+		void	signForm(Form &form);
 
 		class GradeTooHighException : public std::exception
 		{
