@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 16:12:26 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/12 23:56:24 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/13 00:50:44 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/13 00:50:57 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
-class ShrubberyCreationForm : public Form				// classe mere/abstraite/concrete/interface
+class RobotomyRequestForm : public Form				// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		ShrubberyCreationForm(void);					// constructeur par défaut
-		ShrubberyCreationForm(ShrubberyCreationForm const &copy);					// constructeur par copie
-		ShrubberyCreationForm(std::string name, int lvlsign, int lvlexe, std::string target);					// constructeur by string
-		~ShrubberyCreationForm(void);					// destructeur
+		RobotomyRequestForm(void);					// constructeur par défaut
+		RobotomyRequestForm(RobotomyRequestForm const &copy);					// constructeur par copie
+		RobotomyRequestForm(std::string name, int lvlsign, int lvlexe, std::string target);					// constructeur by string
+		~RobotomyRequestForm(void);					// destructeur
 
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &rhs);					// surcharge d'assignation
+		RobotomyRequestForm &operator=(RobotomyRequestForm const &rhs);					// surcharge d'assignation
 
 		std::string const	&getTarget(void) const;
 
@@ -38,4 +38,4 @@ class ShrubberyCreationForm : public Form				// classe mere/abstraite/concrete/i
 		
 };
 
-std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm const &rhs);
+std::ostream &operator<<(std::ostream &o, RobotomyRequestForm const &rhs);

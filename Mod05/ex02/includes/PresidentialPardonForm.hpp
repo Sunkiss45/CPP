@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 16:12:26 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/12 23:56:24 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/13 01:08:27 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/13 01:08:47 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
-class ShrubberyCreationForm : public Form				// classe mere/abstraite/concrete/interface
+class PresidentialPardonForm : public Form				// classe mere/abstraite/concrete/interface
 {
 
 	public :
-		ShrubberyCreationForm(void);					// constructeur par défaut
-		ShrubberyCreationForm(ShrubberyCreationForm const &copy);					// constructeur par copie
-		ShrubberyCreationForm(std::string name, int lvlsign, int lvlexe, std::string target);					// constructeur by string
-		~ShrubberyCreationForm(void);					// destructeur
+		PresidentialPardonForm(void);					// constructeur par défaut
+		PresidentialPardonForm(PresidentialPardonForm const &copy);					// constructeur par copie
+		PresidentialPardonForm(std::string name, int lvlsign, int lvlexe, std::string target);					// constructeur by string
+		~PresidentialPardonForm(void);					// destructeur
 
-		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &rhs);					// surcharge d'assignation
+		PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);					// surcharge d'assignation
 
 		std::string const	&getTarget(void) const;
 
@@ -38,4 +38,4 @@ class ShrubberyCreationForm : public Form				// classe mere/abstraite/concrete/i
 		
 };
 
-std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm const &rhs);
+std::ostream &operator<<(std::ostream &o, PresidentialPardonForm const &rhs);

@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 13:54:45 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/10 17:22:08 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/13 01:15:31 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ vpath %.cpp srcs
 SRC		=	srcs/main.cpp \
 			srcs/Bureaucrat.cpp \
 			srcs/Form.cpp \
+			srcs/ShrubberyCreationForm.cpp \
+			srcs/RobotomyRequestForm.cpp \
+			srcs/PresidentialPardonForm.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 

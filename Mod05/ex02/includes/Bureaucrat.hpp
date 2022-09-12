@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:59:05 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 18:41:10 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:13:34 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ class Bureaucrat					// classe mere/abstraite/concrete/interface
 		void	downGrade(void);
 		void	checkGrade(void);
 		void	signForm(Form &form);
+		void	executeForm(Form const & form);
 
 		class GradeTooHighException : public std::exception
 		{

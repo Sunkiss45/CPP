@@ -6,13 +6,14 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:33:42 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 20:19:49 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:18:32 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include <fstream>
 # include "Bureaucrat.hpp"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
@@ -35,6 +36,11 @@ class Form					// classe mere/abstraite/concrete/interface
 		int		getLvlSign(void) const;
 		int		getLvlExe(void) const;
 
+		void	setName(std::string name);
+		void	setSign(bool sign);
+		void	setLvlSign(int lvlsign);
+		void	setLvlExe(int lvlexe);
+
 		void	checkGrade(void) const;
 		void	beSigned(Bureaucrat &bur);
 
@@ -55,13 +61,19 @@ class Form					// classe mere/abstraite/concrete/interface
 		class BurGradeTooLowException : public std::exception
 		{
 			virtual const char	*what(void) const throw() {
-				return ("Bureaucrat is not high grade enougth to sign Form !"); }
+				return ("Bureaucrat is not high grade enougth to manage Form !"); }
 		};
 
 		class FormAlreadySignedException : public std::exception
 		{
 			virtual const char	*what(void) const throw() {
 				return ("the Form is alrdeay signed !"); }
+		};
+
+		class FormNotSignException : public std::exception
+		{
+			virtual const char	*what(void) const throw() {
+				return ("the Form is not signed, so he can't be executed !"); }
 		};
 
 	private :

@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:35:13 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 20:03:27 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 01:18:17 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,22 @@ int	Form::getLvlSign(void) const {
 
 int	Form::getLvlExe(void) const {
 	return(this->_lvlexe); }
+
+void	Form::setName(std::string name) {
+	this->_name = name;
+	return; }
+
+void	Form::setSign(bool sign) {
+	this->_sign = sign;
+	return; }
+
+void	Form::setLvlSign(int lvlsign) {
+	this->_lvlsign = lvlsign;
+	return; }
+
+void	Form::setLvlExe(int lvlexe) {
+	this->_lvlexe = lvlexe;
+	return; }
 
 //---------------------------   MEMBER FUNCTIONS   ---------------------------//
 

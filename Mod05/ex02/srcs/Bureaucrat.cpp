@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 14:05:01 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 18:42:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 00:13:50 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,15 @@ void	Bureaucrat::signForm(Form &form) {
 		std::cout << YELLOW << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << RESET << std::endl; 
 		return; }
 	std::cout << GREEN << this->getName() << " signed " << form.getName() << RESET << std::endl;
+	return; }
+
+void	Bureaucrat::executeForm(Form const &form) {
+	try {
+		form.execute(*this); }
+	catch (std::exception &e) {
+		std::cout << YELLOW << this->getName() << " couldn't execute " << form.getName() << " because " << e.what() << RESET << std::endl; 
+		return; }
+	std::cout << GREEN << this->getName() << " execute " << form.getName() << RESET << std::endl;
 	return; }
 
 //-------------------------   NON MEMBER FUNCTIONS   -------------------------//
