@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 01:09:04 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 01:16:05 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 12:31:15 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	else if (executor.getGrade() > this->getLvlExe()) {
 		throw (Form::BurGradeTooLowException()); }
 	else {
-		std::cout << BLUE << "The president Zaphod Beeblebrox inform all Bureaucrat that " << this->_target << " has been pardonned." << std::endl; }
+		std::cout << CYAN << "The president Zaphod Beeblebrox inform all Bureaucrat that " << this->_target << " has been pardonned." << std::endl; }
 	return; }
 
 //-------------------------   NON MEMBER FUNCTIONS   -------------------------//

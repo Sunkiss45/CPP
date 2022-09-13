@@ -1,43 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/13 00:58:01 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 12:32:31 by ebarguil         ###   ########.fr       */
+/*   Created: 2022/09/13 01:09:04 by ebarguil          #+#    #+#             */
+/*   Updated: 2022/09/13 12:31:00 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
-RobotomyRequestForm::RobotomyRequestForm(void) : Form(), _target("None") {	// constructeur par défaut
-	std::cout << "RobotomyRequestForm Default constructor called." << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(void) : Form(), _target("None") {	// constructeur par défaut
+	std::cout << "PresidentialPardonForm Default constructor called." << std::endl;
 	return; }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy) : Form() {	// constructeur par copie
-	std::cout << "RobotomyRequestForm Copy constructor called." << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy) : Form() {	// constructeur par copie
+	std::cout << "PresidentialPardonForm Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string name, int lvlsign, int lvlexe, std::string target) 
+PresidentialPardonForm::PresidentialPardonForm(std::string name, int lvlsign, int lvlexe, std::string target) 
 	: Form(name, lvlsign, lvlexe), _target(target) {	// constructeur by string
-	std::cout << "RobotomyRequestForm String constructor called." << std::endl;
+	std::cout << "PresidentialPardonForm String constructor called." << std::endl;
 	return; }
 
-RobotomyRequestForm::~RobotomyRequestForm(void) {	// destructeur
-	std::cout << "RobotomyRequestForm Destructor called." << std::endl;
+PresidentialPardonForm::~PresidentialPardonForm(void) {	// destructeur
+	std::cout << "PresidentialPardonForm Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
-RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs) {
-	std::cout << "RobotomyRequestForm Assignment operator called." << std::endl;
+PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs) {
+	std::cout << "PresidentialPardonForm Assignment operator called." << std::endl;
 	this->setName(rhs.getName());
 	this->setSign(rhs.getSign());
 	this->setLvlSign(rhs.getLvlSign());
@@ -47,30 +47,24 @@ RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &
 
 //---------------------------   SETTER / GETTER   ----------------------------//
 
-std::string const		&RobotomyRequestForm::getTarget() const {
+std::string const		&PresidentialPardonForm::getTarget() const {
 	return(this->_target); }
 
 //---------------------------   MEMBER FUNCTIONS   ---------------------------//
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const {
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	if (!this->getSign()) {
 		throw (Form::FormNotSignException()); }
 	else if (executor.getGrade() > this->getLvlExe()) {
 		throw (Form::BurGradeTooLowException()); }
 	else {
-		static int	i;
-		std::cout << CYAN << "Bbbbbbbrrrrr...bbbbrrr...BBBbbbrrrr...BbbBbbrr..." << std::endl;
-		if (i % 2 == 0)
-			std::cout << this->_target << " has been robotomized successfully." << RESET << std::endl;
-		else
-			std::cout << this->_target << " robotomization failed." << RESET << std::endl;
-		i++; }
+		std::cout << CYAN << "The president Zaphod Beeblebrox inform all Bureaucrat that " << this->_target << " has been pardonned." << std::endl; }
 	return; }
 
 //-------------------------   NON MEMBER FUNCTIONS   -------------------------//
 
-std::ostream		&operator<<(std::ostream &out, RobotomyRequestForm const &rhs) {
-	out << "RobotomyRequestForm " << rhs.getName() << " is ";
+std::ostream		&operator<<(std::ostream &out, PresidentialPardonForm const &rhs) {
+	out << "PresidentialPardonForm " << rhs.getName() << " is ";
 	if (rhs.getSign()) {
 		out << "signed"; }
 	else {
