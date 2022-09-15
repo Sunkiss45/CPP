@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 11:25:38 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/06 17:37:07 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/13 16:08:06 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,47 @@
 
 int	main() {
 
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	// Fixed a;
+	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
+	// std::cout << a << std::endl;
+	// std::cout << ++a << std::endl;
+	// std::cout << a << std::endl;
+	// std::cout << a++ << std::endl;
+	// std::cout << a << std::endl;
 
-	std::cout << b << std::endl;
+	// std::cout << b << std::endl;
 
-	std::cout << Fixed::max( a, b ) << std::endl;
+	// std::cout << Fixed::max( a, b ) << std::endl;
 
-	// Fixed	a(42.42f);
-	// Fixed	b(42.4219f);
+	Fixed	a(42.42f);
+	Fixed	b(42.4219f);
 
-	// std::cout << "Raw value : a - (" << a << ") / b - (" << b << ")" << std::endl;
-	// if (a > b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
-	// if (a < b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
-	// if (a >= b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
-	// if (a <= b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
-	// if (a == b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
-	// if (a != b)
-	// 	std::cout << "true" << std::endl;
-	// else
-	// 	std::cout << "false" << std::endl;
+	std::cout << "Raw value : a - (" << a << ") / b - (" << b << ")" << std::endl;
+	if (a > b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
+	if (a < b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
+	if (a >= b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
+	if (a <= b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
+	if (a == b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
+	if (a != b)
+		std::cout << "true" << std::endl;
+	else
+		std::cout << "false" << std::endl;
 
 
 	// Fixed	a(10.5f);
