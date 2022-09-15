@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:39:13 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/15 16:58:22 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/15 18:44:11 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 # include <iostream>
 # include <cstdlib>
+# include <climits>
+# include <cfloat>
 
 #define RESET "\e[0m"
 #define RED "\e[0;31m"
@@ -34,5 +36,10 @@ class Convert					// classe mere/abstraite/concrete/interface
 		~Convert(void);					// destructeur
 
 		Convert &operator=(Convert const &rhs);					// surcharge d'assignation
+
+		void	setType(char const *str);
+
+	private :
+		int	_type;
 
 };
