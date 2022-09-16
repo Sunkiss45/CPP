@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:33:12 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/15 18:46:18 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/16 14:31:24 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,17 @@ int	main(int ac, char **av) {
 		std::cout << RED << "! Error arguments !" << RESET << std::endl;
 		return 1; }
 
+	Convert convert;
 
-	char	*end;
-	double	d = std::strtod(av[ac], &end);
-
-	if (end == av[ac]) {// || d > FLT_MAX || d < FLT_MIN) {
-		std::cout << RED << "d CPT" << std::endl; 
+	try {
+		convert.setType(av[ac]); }
+	catch (std::exception &e) {
+		std::cout << RED << e.what() << RESET << std::endl; 
 		return 1; }
 
-	std::cout << GREEN << "d = " << d << std::endl;
+	try {
+		convert.printType(av[ac]); }
+	catch (std::exception &e) {
+		std::cout << RED << e.what() << RESET << std::endl; }
 
-
-
-	// char	*str = av[ac];
-
-	// char	*end;
-	// double	d = std::strtod(str, &end);
-	// if (end == str) {
-	// 	std::cout << RED << "d CPT" << std::endl;
-	// 	return 1; }
-	// std::cout << GREEN << "d = " << d << std::endl;
 	return 0; }
