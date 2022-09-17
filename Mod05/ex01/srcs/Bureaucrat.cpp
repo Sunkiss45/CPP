@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 14:05:01 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 18:42:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 12:35:37 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,27 @@
 
 Bureaucrat::Bureaucrat(void) : _name("NoBody"), _g(42) {				// constructeur par défaut
 	this->checkGrade();
-	std::cout << "Bureaucrat Default constructor called." << std::endl;
+//	std::cout << "Bureaucrat Default constructor called." << std::endl;
 	return; }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &copy) {						// constructeur par copie
-	std::cout << "Bureaucrat Copy constructor called." << std::endl;
+//	std::cout << "Bureaucrat Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 Bureaucrat::Bureaucrat(std::string name, int g) : _name(name), _g(g) {	// constructeur by string
 	this->checkGrade();
-	std::cout << "Bureaucrat String constructor called." << std::endl;
+//	std::cout << "Bureaucrat String constructor called." << std::endl;
 	return; }
 
 Bureaucrat::~Bureaucrat(void) {											// destructeur
-	std::cout << "Bureaucrat Destructor called." << std::endl;
+//	std::cout << "Bureaucrat Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 Bureaucrat	&Bureaucrat::operator=(Bureaucrat const &rhs) {
-	std::cout << "Bureaucrat Assignment operator called." << std::endl;
+//	std::cout << "Bureaucrat Assignment operator called." << std::endl;
 	this->_name = rhs._name;
 	this->_g = rhs._g;
 	return(*this); }
@@ -72,7 +72,7 @@ void	Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this); }
 	catch (std::exception &e) {
-		std::cout << YELLOW << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << RESET << std::endl; 
+		std::cout << RED << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << RESET << std::endl; 
 		return; }
 	std::cout << GREEN << this->getName() << " signed " << form.getName() << RESET << std::endl;
 	return; }

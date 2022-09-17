@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:59:05 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/10 19:38:23 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 10:44:44 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 
 #define RESET "\e[0m"
 #define RED "\e[0;31m"
+#define BRED "\e[1;31m"
 #define GREEN "\e[0;32m"
+#define BGREEN "\e[1;32m"
+#define SGREEN "\e[4;32m"
 #define YELLOW "\e[0;33m"
 #define BLUE "\e[0;34m"
+#define BBLUE "\e[1;34m"
 #define PURPLE "\e[0;35m"
 #define CYAN "\e[0;36m"
 
