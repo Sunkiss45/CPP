@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:54:30 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 19:20:59 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 21:44:00 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int	main() {
 			std::cout << BGREEN << "Creation of a Form [article] (param) :" << RESET << std::endl; 
 			Form	article("49-3", 21, 84);
 			std::cout << GREEN << "\t" << article << RESET << std::endl;
-			
+
+			std::cout << std::endl; 
+
 			std::cout << BGREEN << "Creation of a Form [articlec] (copy of [article]) :" << RESET << std::endl; 
 			Form	articlec(article);
 			std::cout << GREEN << "\t" << articlec << RESET << std::endl;  }
