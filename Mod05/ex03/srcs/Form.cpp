@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 16:35:13 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 01:18:17 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:54:20 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 Form::Form(void) : _name("Random"), _sign(false), _lvlsign(84), _lvlexe(21) {	// constructeur par défaut
 	this->checkGrade();
-	std::cout << "Form Default constructor called." << std::endl;
+	// std::cout << "Form Default constructor called." << std::endl;
 	return; }
 
 Form::Form(Form const &copy) {	// constructeur par copie
-	std::cout << "Form Copy constructor called." << std::endl;
+	// std::cout << "Form Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 Form::Form(std::string name, int lvlsign, int lvlexe) : 
 	_name(name), _sign(false), _lvlsign(lvlsign), _lvlexe(lvlexe) {	// constructeur by string
 	this->checkGrade();
-	std::cout << "Form String constructor called." << std::endl;
+	// std::cout << "Form String constructor called." << std::endl;
 	return; }
 
 Form::~Form(void) {	// destructeur
-	std::cout << "Form Destructor called." << std::endl;
+	// std::cout << "Form Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 Form		&Form::operator=(Form const &rhs) {
-	std::cout << "Form Assignment operator called." << std::endl;
+	// std::cout << "Form Assignment operator called." << std::endl;
 	this->_name = rhs._name;
 	this->_sign = rhs._sign;
 	this->_lvlsign = rhs._lvlsign;

@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:58:01 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 12:32:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:08:11 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
-RobotomyRequestForm::RobotomyRequestForm(void) : Form(), _target("None") {	// constructeur par défaut
-	std::cout << "RobotomyRequestForm Default constructor called." << std::endl;
+RobotomyRequestForm::RobotomyRequestForm(void) : Form("RobotomyRequest", 72, 45), _target("None") {	// constructeur par défaut
+	// std::cout << "RobotomyRequestForm Default constructor called." << std::endl;
 	return; }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy) : Form() {	// constructeur par copie
-	std::cout << "RobotomyRequestForm Copy constructor called." << std::endl;
+	// std::cout << "RobotomyRequestForm Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string name, int lvlsign, int lvlexe, std::string target) 
 	: Form(name, lvlsign, lvlexe), _target(target) {	// constructeur by string
-	std::cout << "RobotomyRequestForm String constructor called." << std::endl;
+	// std::cout << "RobotomyRequestForm String constructor called." << std::endl;
 	return; }
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {	// destructeur
-	std::cout << "RobotomyRequestForm Destructor called." << std::endl;
+	// std::cout << "RobotomyRequestForm Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 RobotomyRequestForm		&RobotomyRequestForm::operator=(RobotomyRequestForm const &rhs) {
-	std::cout << "RobotomyRequestForm Assignment operator called." << std::endl;
+	// std::cout << "RobotomyRequestForm Assignment operator called." << std::endl;
 	this->setName(rhs.getName());
 	this->setSign(rhs.getSign());
 	this->setLvlSign(rhs.getLvlSign());

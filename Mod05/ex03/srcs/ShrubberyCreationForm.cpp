@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:32:12 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 00:22:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 21:24:40 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : Form(), _target("None") {	// constructeur par défaut
-	std::cout << "ShrubberyCreationForm Default constructor called." << std::endl;
+ShrubberyCreationForm::ShrubberyCreationForm(void) : Form("ShrubberyCreation", 145, 137), _target("None") {	// constructeur par défaut
+	// std::cout << "ShrubberyCreationForm Default constructor called." << std::endl;
 	return; }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy) : Form() {	// constructeur par copie
-	std::cout << "ShrubberyCreationForm Copy constructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string name, int lvlsign, int lvlexe, std::string target) 
 	: Form(name, lvlsign, lvlexe), _target(target) {	// constructeur by string
-	std::cout << "ShrubberyCreationForm String constructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm String constructor called." << std::endl;
 	return; }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void) {	// destructeur
-	std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
+	// std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 ShrubberyCreationForm		&ShrubberyCreationForm::operator=(ShrubberyCreationForm const &rhs) {
-	std::cout << "ShrubberyCreationForm Assignment operator called." << std::endl;
+	// std::cout << "ShrubberyCreationForm Assignment operator called." << std::endl;
 	this->setName(rhs.getName());
 	this->setSign(rhs.getSign());
 	this->setLvlSign(rhs.getLvlSign());

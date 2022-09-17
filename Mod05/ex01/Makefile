@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 13:54:45 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/10 17:22:08 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/17 19:01:03 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ INC		=	includes
 
 CXX		=	c++
 CXFLAGS	=	-std=c++98 -Wall -Wextra -Werror -I $(INC)
+CXDEP	=	-MMD
 CFA		=	-fsanitize=address -g3
 RM		=	/usr/bin/rm -rf
 
@@ -26,6 +27,7 @@ SRC		=	srcs/main.cpp \
 			srcs/Form.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
+DEP		=	$(SRC:srcs/%.cpp=objs/%.d)
 
 all			:	obj $(NAME)
 
@@ -40,17 +42,18 @@ obj			:
 				@echo ""
 
 objs/%.o	:	%.cpp
-				$(CXX) -o $@ -c $< $(CXFLAGS)
+				$(CXX) -o $@ -c $< $(CXFLAGS) $(CXDEP)
 
 clean		:
 				$(RM) $(OBJ)
+				$(RM) $(DEP)
 				$(RM) objs
 
 fclean		:	clean
 				$(RM) $(NAME)
 
 fsa			:	fclean obj $(OBJ)
-				$(CXX) $(CXFLAGS) $(CFA) -o $(NAME) $(SRC)
+				$(CXX) $(CXFLAGS) $(CXDEP) $(CFA) -o $(NAME) $(SRC)
 
 re			:	fclean all
 

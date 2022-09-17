@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:54:30 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 12:38:07 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 20:53:25 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main() {
 
+	std::cout << std::endl << SGREEN << BGREEN << "Tests of default / copy / param constructor of Bureaucrat :" << RESET << std::endl << std::endl;
 	{
-		std::cout << std::endl << SGREEN << BGREEN << "Tests of default / copy / param constructor of Bureaucrat :" << RESET << std::endl << std::endl;
 		try {
 			std::cout << BGREEN << "Creation of a Bureaucrat [nobody] (default) :" << RESET << std::endl; 
 			Bureaucrat	nobody;
@@ -31,7 +31,13 @@ int	main() {
 
 			std::cout << BGREEN << "Creation of a Bureaucrat [richard] (param) :" << RESET << std::endl;
 			Bureaucrat	richard("Richard", 21);
-			std::cout << GREEN << "\t" << richard << RESET << std::endl; }
+			std::cout << GREEN << "\t" << richard << RESET << std::endl;
+
+			std::cout << std::endl; 
+
+			std::cout << BGREEN << "Creation of a Bureaucrat [richardc] (copy of [richard]) :" << RESET << std::endl; 
+			Bureaucrat	richardc(richard);
+			std::cout << GREEN << "\t" << richardc << RESET << std::endl; }
 		catch (std::exception &e) {
 			std::cout << BRED << e.what() << RESET << std::endl; }
 		std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 01:09:04 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 12:31:00 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 21:24:09 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,28 @@
 
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
-PresidentialPardonForm::PresidentialPardonForm(void) : Form(), _target("None") {	// constructeur par défaut
-	std::cout << "PresidentialPardonForm Default constructor called." << std::endl;
+PresidentialPardonForm::PresidentialPardonForm(void) : Form("PresidentialPardon", 25, 5), _target("None") {	// constructeur par défaut
+	// std::cout << "PresidentialPardonForm Default constructor called." << std::endl;
 	return; }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy) : Form() {	// constructeur par copie
-	std::cout << "PresidentialPardonForm Copy constructor called." << std::endl;
+	// std::cout << "PresidentialPardonForm Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string name, int lvlsign, int lvlexe, std::string target) 
 	: Form(name, lvlsign, lvlexe), _target(target) {	// constructeur by string
-	std::cout << "PresidentialPardonForm String constructor called." << std::endl;
+	// std::cout << "PresidentialPardonForm String constructor called." << std::endl;
 	return; }
 
 PresidentialPardonForm::~PresidentialPardonForm(void) {	// destructeur
-	std::cout << "PresidentialPardonForm Destructor called." << std::endl;
+	// std::cout << "PresidentialPardonForm Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 PresidentialPardonForm		&PresidentialPardonForm::operator=(PresidentialPardonForm const &rhs) {
-	std::cout << "PresidentialPardonForm Assignment operator called." << std::endl;
+	// std::cout << "PresidentialPardonForm Assignment operator called." << std::endl;
 	this->setName(rhs.getName());
 	this->setSign(rhs.getSign());
 	this->setLvlSign(rhs.getLvlSign());

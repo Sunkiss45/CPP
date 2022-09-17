@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 11:17:07 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/13 12:27:31 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 21:26:21 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
 Intern::Intern(void) {	// constructeur par défaut
-	std::cout << "Intern Default constructor called." << std::endl;
+	// std::cout << "Intern Default constructor called." << std::endl;
 	return; }
 
 Intern::Intern(Intern const &copy) {	// constructeur par copie
-	std::cout << "Intern Copy constructor called." << std::endl;
+	// std::cout << "Intern Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 Intern::~Intern(void) {	// destructeur
-	std::cout << "Intern Destructor called." << std::endl;
+	// std::cout << "Intern Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 Intern		&Intern::operator=(Intern const &rhs) {
-	std::cout << "Intern Assignment operator called." << std::endl;
+	// std::cout << "Intern Assignment operator called." << std::endl;
 	(void)rhs;
 	return(*this); }
 
@@ -46,13 +46,13 @@ Form	*Intern::makeForm(std::string type, std::string target) {
 		switch (i) {
 			case 0 :
 				std::cout << GREEN << "Intern creates ShrubberyCreationForm" << RESET << std::endl;;
-				return (new ShrubberyCreationForm("Random", 100, 100, target));
+				return (new ShrubberyCreationForm("ShrubberyCreation", 145, 137, target));
 			case 1 :
 				std::cout << GREEN << "Intern creates RobotomyRequestForm" << RESET << std::endl;;
-				return (new RobotomyRequestForm("Random", 100, 100, target));
+				return (new RobotomyRequestForm("RobotomyRequest", 72, 45, target));
 			case 2 :
 				std::cout << GREEN << "Intern creates PresidentialPardonForm" << RESET << std::endl;;
-				return (new PresidentialPardonForm("Random", 100, 100, target));
+				return (new PresidentialPardonForm("PresidentialPardon", 25, 5, target));
 			default :
 				throw(Intern::MakeFormInvalidException()); } }
 	catch (std::exception &e) {

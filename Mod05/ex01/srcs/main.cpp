@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 13:54:30 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 12:43:38 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:20:59 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,11 @@ int	main() {
 
 			std::cout << BGREEN << "Creation of a Form [article] (param) :" << RESET << std::endl; 
 			Form	article("49-3", 21, 84);
-			std::cout << GREEN << "\t" << article << RESET << std::endl; }
+			std::cout << GREEN << "\t" << article << RESET << std::endl;
+			
+			std::cout << BGREEN << "Creation of a Form [articlec] (copy of [article]) :" << RESET << std::endl; 
+			Form	articlec(article);
+			std::cout << GREEN << "\t" << articlec << RESET << std::endl;  }
 		catch (std::exception &e) {
 			std::cout << BRED << e.what() << RESET << std::endl; }
 		std::cout << std::endl;
@@ -141,7 +145,7 @@ int	main() {
 	
 	std::cout << std::endl;
 
-	std::cout << SGREEN << BGREEN << "Tests Divers :" << RESET << std::endl << std::endl;
+	std::cout << SGREEN << BGREEN << "Tests Divers 1 :" << RESET << std::endl << std::endl;
 	{
 		try {
 			std::cout << BGREEN << "Creation of 3 Bureaucrat [boss, manager, someone] (param) :" << RESET << std::endl; 
@@ -157,39 +161,64 @@ int	main() {
 			std::cout << BGREEN << "Creation of a Form [real] (param) :" << RESET << std::endl; 
 			Form	real("Real", 50, 150);
 			std::cout << GREEN << "\t" << real << RESET << std::endl;
-
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [someone] :" << RESET << std::endl;
+			std::cout << "\t"; 
 			someone.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [boss] :" << RESET << std::endl;
+			std::cout << "\t"; 
 			boss.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [someone] :" << RESET << std::endl;
+			std::cout << "\t"; 
 			someone.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [manager] :" << RESET << std::endl;
+			std::cout << "\t";
 			manager.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl; }
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl; }
 		catch (std::exception &e) {
 			std::cout << BRED << e.what() << RESET << std::endl; }
+		std::cout << std::endl;
 	}
-
-	std::cout << std::endl << std::endl;
-
+	
+	std::cout << SGREEN << BGREEN << "Tests Divers 2 :" << RESET << std::endl << std::endl;
 	{
 		try {
+			std::cout << BGREEN << "Creation of 2 Bureaucrat [boss, manager] (param) :" << RESET << std::endl; 
 			Bureaucrat	boss("Boss", 1);
+			std::cout << GREEN << "\t" << boss << RESET << std::endl; 
 			Bureaucrat	manager("Manager", 2);
+			std::cout << GREEN << "\t" << manager << RESET << std::endl;
+			
+			std::cout << std::endl;
+			
+			std::cout << BGREEN << "Creation of a Form [real] (param) :" << RESET << std::endl; 
 			Form	real("Real", 1, 150);
-
-			std::cout << GREEN << boss << RESET << std::endl;
-			std::cout << GREEN << manager << RESET << std::endl; 
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << GREEN << "\t" << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [manager] :" << RESET << std::endl;
+			std::cout << "\t"; 
 			manager.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "upGrade() on [manager] :" << RESET << std::endl;
 			manager.upGrade();
-			std::cout << GREEN << manager << RESET << std::endl; 
+			std::cout << GREEN << "\t" << manager << RESET << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [manager] :" << RESET << std::endl;
+			std::cout << "\t"; 
 			manager.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl;
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl;
+			std::cout << std::endl;
+			std::cout << BGREEN << "Sign of [real] by [boss] :" << RESET << std::endl;
+			std::cout << "\t";
 			boss.signForm(real);
-			std::cout << GREEN << real << RESET << std::endl; }
+			std::cout << YELLOW << "Verification of [real] : " << real << RESET << std::endl; }
 		catch (std::exception &e) {
 			std::cout << BRED << e.what() << RESET << std::endl; }
 	}
