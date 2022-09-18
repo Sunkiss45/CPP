@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 15:38:49 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/16 14:47:25 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/17 22:15:52 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 //-----------------------   CONSTRUCTOR / DESTRUCTOR   -----------------------//
 
 Convert::Convert(void) : _type(-1) {	// constructeur par défaut
-	std::cout << "Convert Default constructor called." << std::endl;
+	// std::cout << "Convert Default constructor called." << std::endl;
 	return; }
 
 Convert::Convert(Convert const &copy) {	// constructeur par copie
-	std::cout << "Convert Copy constructor called." << std::endl;
+	// std::cout << "Convert Copy constructor called." << std::endl;
 	*this = copy;
 	return; }
 
 Convert::~Convert(void) {	// destructeur
-	std::cout << "Convert Destructor called." << std::endl;
+	// std::cout << "Convert Destructor called." << std::endl;
 	return; }
 
 //------------------------------   SURCHARGES   ------------------------------//
 
 Convert		&Convert::operator=(Convert const &rhs) {
-	std::cout << "Convert Assignment operator called." << std::endl;
+	// std::cout << "Convert Assignment operator called." << std::endl;
 	this->_type = rhs._type;
 	return(*this); }
 
@@ -50,13 +50,13 @@ void	Convert::setType(char const *str) {
 	
 	// switch (this->_type) {
 	// 	case 0:
-	// 		std::cout << GREEN << "CHAR" << RESET << std::endl; break;
+	// 		std::cout << PURPLE << "CHAR" << RESET << std::endl; break;
 	// 	case 1:
-	// 		std::cout << GREEN << "INT" << RESET << std::endl; break;
+	// 		std::cout << PURPLE << "INT" << RESET << std::endl; break;
 	// 	case 2:
-	// 		std::cout << GREEN << "FLOAT" << RESET << std::endl; break;
+	// 		std::cout << PURPLE << "FLOAT" << RESET << std::endl; break;
 	// 	case 3:
-	// 		std::cout << GREEN << "DOUBLE " << RESET << std::endl; break; }
+	// 		std::cout << PURPLE << "DOUBLE " << RESET << std::endl; break; }
 	
 	
 	return; }
@@ -64,7 +64,6 @@ void	Convert::setType(char const *str) {
 //---------------------------   MEMBER FUNCTIONS   ---------------------------//
 
 void	Convert::printType(char const *str) const {
-	std::cout << GREEN << std::endl;
 	switch (this->_type) {
 		case 0: 
 			printChar(str[0]); break;
@@ -74,7 +73,6 @@ void	Convert::printType(char const *str) const {
 			printFloat(std::strtod(str, 0)); break;
 		case 3: 
 			printDouble(std::strtod(str, 0)); break; }
-	std::cout << RESET << std::endl;
 	return; }
 
 //-------------------------   NON MEMBER FUNCTIONS   -------------------------//
@@ -135,61 +133,61 @@ bool	isDouble(char const *value)
 
 void	printChar(char c)
 {
-	std::cout << "char :		" << c << std::endl;
-	std::cout << "int : 		" << static_cast<int>(c) << std::endl;
-	std::cout << "float :		" << static_cast<float>(c) << "f" << std::endl;
-	std::cout << "double :	" << static_cast<double>(c) << std::endl;
+	std::cout << BGREEN << "char :		" << GREEN << c << RESET << std::endl;
+	std::cout << BGREEN << "int : 		" << GREEN << static_cast<int>(c) << RESET << std::endl;
+	std::cout << BGREEN << "float :		" << GREEN << static_cast<float>(c) << "f" << RESET << std::endl;
+	std::cout << BGREEN << "double :	" << GREEN << static_cast<double>(c) << RESET << std::endl;
 	return;
 }
 
 void	printInt(int i)
 {
-	std::cout << "char :		";
+	std::cout << BGREEN << "char :		";
 	if (i < 0 || i > 127) {
-		std::cout << RED << "Impossible" << GREEN << std::endl; }
+		std::cout << RED << "Impossible" << RESET << std::endl; }
 	else if (!isprint(i)) {
-		std::cout << YELLOW << "Non printable" << GREEN << std::endl; }
+		std::cout << YELLOW << "Non printable" << RESET << std::endl; }
 	else {
-		std::cout << static_cast<char>(i) << std::endl; }
-	std::cout << "int : 		" << i << std::endl;
-	std::cout << "float :		" << static_cast<float>(i) << "f" << std::endl;
-	std::cout << "double :	" << static_cast<double>(i) << std::endl;
+		std::cout << GREEN << static_cast<char>(i) << RESET << std::endl; }
+	std::cout << BGREEN << "int : 		" << GREEN << i << RESET << std::endl;
+	std::cout << BGREEN << "float :		" << GREEN << static_cast<float>(i) << "f" << RESET << std::endl;
+	std::cout << BGREEN << "double :	" << GREEN << static_cast<double>(i) << RESET << std::endl;
 }
 
 void	printFloat(float f)
 {
-	std::cout << "char :		";
+	std::cout << BGREEN << "char :		";
 	int	i = roundf(f);
 	if (i < 0 || i > 127) {
-		std::cout << RED << "Impossible" << GREEN << std::endl; }
+		std::cout << RED << "Impossible" << RESET << std::endl; }
 	else if (!isprint(i)) {
-		std::cout << YELLOW << "Non printable" << GREEN << std::endl; }
+		std::cout << YELLOW << "Non printable" << RESET << std::endl; }
 	else {
-		std::cout << static_cast<char>(i) << std::endl; }
-	std::cout << "int : 		";
+		std::cout << GREEN << static_cast<char>(i) << RESET << std::endl; }
+	std::cout << BGREEN << "int : 		";
 	if (f > INT_MAX * 1.0 || f < INT_MIN * 1.0 || isnan(f)) {
-		std::cout << RED << "Impossible" << GREEN << std::endl; }
+		std::cout << RED << "Impossible" << RESET << std::endl; }
 	else {
-		std::cout << static_cast<int>(f) << std::endl; }
-	std::cout << "float :		" << f << "f" << std::endl;
-	std::cout << "double :	" << static_cast<double>(f) << std::endl;
+		std::cout << GREEN << static_cast<int>(f) << RESET << std::endl; }
+	std::cout << BGREEN << "float :		" << GREEN << f << "f" << RESET << std::endl;
+	std::cout << BGREEN << "double :	" << GREEN << static_cast<double>(f) << RESET << std::endl;
 }
 
 void	printDouble(double d)
 {
-	std::cout << "char :		";
+	std::cout << BGREEN "char :		";
 	int	i = round(d);
 	if (i < 0 || i > 127) {
-		std::cout << RED << "Impossible" << GREEN << std::endl; }
+		std::cout << RED << "Impossible" << RESET << std::endl; }
 	else if (!isprint(i)) {
-		std::cout << "Non displayable" << std::endl; }
+		std::cout << YELLOW << "Non displayable" << RESET << std::endl; }
 	else {
-		std::cout << static_cast<char>(i) << std::endl; }
-	std::cout << "int : 		";
+		std::cout << GREEN << static_cast<char>(i) << RESET << std::endl; }
+	std::cout << BGREEN << "int : 		";
 	if (d > INT_MAX * 1.0 || d < INT_MIN * 1.0 || isnan(d)) {
-		std::cout << RED << "Impossible" << GREEN << std::endl; }
+		std::cout << RED << "Impossible" << RESET << std::endl; }
 	else {
-		std::cout << static_cast<int>(d) << std::endl; }
-	std::cout << "float :		" << static_cast<float>(d) << "f" << std::endl;
-	std::cout << "double :	" << d << std::endl;
+		std::cout << GREEN << static_cast<int>(d) << RESET << std::endl; }
+	std::cout << BGREEN << "float :		" << GREEN << static_cast<float>(d) << "f" << RESET << std::endl;
+	std::cout << BGREEN << "double :	" << GREEN << d << RESET << std::endl;
 }

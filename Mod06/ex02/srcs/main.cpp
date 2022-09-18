@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 16:25:02 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/16 16:53:35 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/18 14:43:56 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ Base * generate(void) {
 	switch (rdm) {
 		case 0:
 			base = new A;
-			std::cout << GREEN << "Random Generate: A" << RESET << std::endl;
+			std::cout << "Random Generate: A" << std::endl;
 			break;
 		case 1:
 			base = new B;
-			std::cout << GREEN << "Random Generate: B" << RESET << std::endl;
+			std::cout << "Random Generate: B" << std::endl;
 			break;
 		case 2:
 			base = new C;
-			std::cout << GREEN << "Random Generate: C" << RESET << std::endl;
+			std::cout << "Random Generate: C" << std::endl;
 			break; }
 
 	return (base); }
@@ -39,15 +39,15 @@ Base * generate(void) {
 void	identify(Base &p) {
 	try {
 		(void)dynamic_cast<A &>(p);
-		std::cout << GREEN << "Identified class: A" << RESET << std::endl; }
+		std::cout << "Identified class: A" << std::endl; }
 	catch (std::exception const &e) {}
 	try {
 		(void)dynamic_cast<B &>(p);
-		std::cout << GREEN << "Identified class: B" << RESET << std::endl; }
+		std::cout << "Identified class: B" << std::endl; }
 	catch (std::exception const &e) {}
 	try {
 		(void)dynamic_cast<C &>(p);
-		std::cout << GREEN << "Identified class: C" << RESET << std::endl; }
+		std::cout << "Identified class: C" << std::endl; }
 	catch (std::exception const &e) {}
 	return; }
 
@@ -56,18 +56,25 @@ void	identify(Base *p) {
 	return; }
 
 int	main() {
-	std::cout << std::endl;
+	std::cout << std::endl << SGREEN << BGREEN << "Test Random choose class :" << RESET << std::endl << std::endl;
+	
+	std::cout << BYELLOW;
 	Base *ptr = generate();
 
 	if (!ptr) {
-		std::cout << RED << "An error occured while generating a random Class.." << RESET << std::endl << std::endl;
+		std::cout << BRED << "An error occured while generating a random Class.." << RESET << std::endl << std::endl;
 		return 1; }
 	
 	std::cout << std::endl;
-	std::cout << GREEN << "identify(ptr) via pointer" << RESET << std::endl;
+
+	std::cout << BGREEN << "identify(ptr) via pointer : " << RESET << std::endl;
+	std::cout << GREEN << "\t";
 	identify(ptr);
-	std::cout << YELLOW << "< ==--== >" << RESET << std::endl;
-	std::cout << GREEN << "identify(*ptr) via reference" << RESET << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << BGREEN << "identify(*ptr) via reference : " << RESET << std::endl;
+	std::cout << GREEN << "\t";
 	identify(*ptr);
 	std::cout << std::endl;
 
