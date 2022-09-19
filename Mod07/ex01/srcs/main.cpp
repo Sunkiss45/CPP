@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:52:50 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/18 17:12:41 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/19 14:02:36 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,12 @@ int main()
 
 		std::cout << std::endl;
 
-		std::cout << BYELLOW << "Execute fct iter(diffTo42) on each string :" << GREEN << std::endl;
+		std::cout << BYELLOW << "Execute fct iter(addSuffixe) on each string :" << GREEN << std::endl;
 		iter(tab, 3, addSuffixe);
 		std::cout << RESET << std::endl;
 	}
 
-	std::cout << std::endl << SGREEN << BGREEN << "Tests fct addSuffixe :" << RESET << std::endl << std::endl;
+	std::cout << std::endl << SGREEN << BGREEN << "Tests fct printSquare :" << RESET << std::endl << std::endl;
 	{
 		size_t	size = 5;
 		Classtest	tab[size];
@@ -89,7 +89,7 @@ int main()
 
 		std::cout << std::endl;
 
-		std::cout << BYELLOW << "Execute fct iter(diffTo42) on each string :" << GREEN << std::endl;
+		std::cout << BYELLOW << "Execute fct iter(printSquare) on each string :" << GREEN << std::endl;
 		iter(tab, size, printSquare);
 		std::cout << RESET << std::endl;
 	}

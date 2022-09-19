@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 20:35:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/19 10:46:55 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/19 14:27:06 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@
 #define BLUE "\e[0;34m"
 #define BBLUE "\e[1;34m"
 #define SBLUE "\e[4;34m"
-#define PURPLE "\e[0;35m"
-#define BPURPLE "\e[1;35m"
-#define SPURPLE "\e[4;35m"
+#define PINK "\e[0;35m"
+#define BPINK "\e[1;35m"
+#define SPINK "\e[4;35m"
 #define CYAN "\e[0;36m"
 #define BCYAN "\e[1;36m"
 #define SCYAN "\e[4;36m"
+
+#define IPURPLE "\e[3;38;5;128m"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 

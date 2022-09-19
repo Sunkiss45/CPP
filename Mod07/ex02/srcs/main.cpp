@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 20:25:51 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/19 13:45:56 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/19 14:27:26 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int main(int, char**)
 		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in INT :" << RESET << std::endl << std::endl;
 		try {
 			unsigned int	n = 10;
-			std::cout << BYELLOW << "Creation of inttab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of inttab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
 			Array<int>	inttab(n);
 			for (unsigned int i = 0; i < n; i++) {
 				inttab[i] = (rand() % 201) - 100; }
@@ -133,7 +133,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Creation of c_inttab, copy of inttab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of c_inttab, copy of inttab.." << RESET << std::endl << std::endl;
 			Array<int>	c_inttab(inttab);
 
 			std::cout << BGREEN << "Display of c_inttab successive with operator [] :" << GREEN << std::endl << "\t";
@@ -160,7 +160,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Modification of the last data of c_inttab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Modification of the last data of c_inttab.." << RESET << std::endl << std::endl;
 			for (c_inttab[n-1] = rand() % 101; c_inttab[n-1] == inttab[n-1]; void()) {
 				c_inttab[n-1] = rand() % 101; }
 			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
@@ -183,7 +183,7 @@ int main(int, char**)
 		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in FLOAT :" << RESET << std::endl << std::endl;
 		try {
 			unsigned int	n = 5;
-			std::cout << BYELLOW << "Creation of floattab, contents [" << n << "] float randomly generated.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of floattab, contents [" << n << "] float randomly generated.." << RESET << std::endl << std::endl;
 			Array<float>	floattab(n);
 			for (unsigned int i = 0; i < n; i++) {
 				floattab[i] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); }
@@ -212,7 +212,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Creation of c_floattab, copy of floattab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of c_floattab, copy of floattab.." << RESET << std::endl << std::endl;
 			Array<float>	c_floattab(floattab);
 
 			std::cout << BGREEN << "Display of c_floattab successive with operator [] :" << GREEN << std::endl << "\t";
@@ -239,7 +239,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Modification of the last data of c_floattab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Modification of the last data of c_floattab.." << RESET << std::endl << std::endl;
 			for (c_floattab[n-1] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); c_floattab[n-1] == floattab[n-1]; void()) {
 				c_floattab[n-1] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); }
 			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
@@ -262,7 +262,7 @@ int main(int, char**)
 		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in CHAR :" << RESET << std::endl << std::endl;
 		try {
 			unsigned int	n = 8;
-			std::cout << BYELLOW << "Creation of chartab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of chartab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
 			Array<char>	chartab(n);
 			for (unsigned int i = 0; i < n; i++) {
 				chartab[i] = 'A' + (rand() % 26); }
@@ -291,7 +291,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Creation of c_chartab, copy of chartab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of c_chartab, copy of chartab.." << RESET << std::endl << std::endl;
 			Array<char>	c_chartab(chartab);
 
 			std::cout << BGREEN << "Display of c_chartab successive with operator [] :" << GREEN << std::endl << "\t";
@@ -318,7 +318,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Modification of the last data of c_chartab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Modification of the last data of c_chartab.." << RESET << std::endl << std::endl;
 			for (c_chartab[n-1] = 'A' + (rand() % 26); c_chartab[n-1] == chartab[n-1]; void()) {
 				c_chartab[n-1] = 'A' + (rand() % 26); }
 			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
@@ -341,7 +341,7 @@ int main(int, char**)
 		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in std::string :" << RESET << std::endl << std::endl;
 		try {
 			unsigned int	n = 3;
-			std::cout << BYELLOW << "Creation of stringtab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of stringtab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
 			Array<std::string>	stringtab(n);
 			for (unsigned int i = 0; i < n; i++) {
 				stringtab[i] = ft_str_generator(); }
@@ -370,7 +370,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Creation of c_stringtab, copy of stringtab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Creation of c_stringtab, copy of stringtab.." << RESET << std::endl << std::endl;
 			Array<std::string>	c_stringtab(stringtab);
 
 			std::cout << BGREEN << "Display of c_stringtab successive with operator [] :" << GREEN << std::endl << "\t";
@@ -397,7 +397,7 @@ int main(int, char**)
 
 			std::cout << std::endl;
 
-			std::cout << BYELLOW << "Modification of the last data of c_stringtab.." << RESET << std::endl << std::endl;
+			std::cout << IPURPLE << "Modification of the last data of c_stringtab.." << RESET << std::endl << std::endl;
 			for (c_stringtab[n-1] = ft_str_generator(); c_stringtab[n-1] == stringtab[n-1]; void()) {
 				c_stringtab[n-1] = ft_str_generator(); }
 			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
