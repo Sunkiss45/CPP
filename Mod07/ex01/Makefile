@@ -6,11 +6,11 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 13:54:45 by ebarguil          #+#    #+#              #
-#    Updated: 2022/09/16 18:21:45 by ebarguil         ###   ########.fr        #
+#    Updated: 2022/09/18 16:46:45 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	test
+NAME	=	iter
 
 INC		=	includes
 

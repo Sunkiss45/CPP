@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 20:35:08 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/16 22:08:00 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/19 10:46:55 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,28 @@
 
 # include <iostream>
 # include <cstdlib>
+# include <cmath>
+# include <climits>
+
+#define RESET "\e[0m"
+#define RED "\e[0;31m"
+#define BRED "\e[1;31m"
+#define SRED "\e[4;31m"
+#define GREEN "\e[0;32m"
+#define BGREEN "\e[1;32m"
+#define SGREEN "\e[4;32m"
+#define YELLOW "\e[0;33m"
+#define BYELLOW "\e[1;33m"
+#define SYELLOW "\e[4;33m"
+#define BLUE "\e[0;34m"
+#define BBLUE "\e[1;34m"
+#define SBLUE "\e[4;34m"
+#define PURPLE "\e[0;35m"
+#define BPURPLE "\e[1;35m"
+#define SPURPLE "\e[4;35m"
+#define CYAN "\e[0;36m"
+#define BCYAN "\e[1;36m"
+#define SCYAN "\e[4;36m"
 
 // ATTENTION : utiliser la forme canonique de Coplien !!
 
@@ -24,7 +46,7 @@ class Array					// classe mere/abstraite/concrete/interface
 	public :
 
 		Array<T>(void) : _tab(NULL), _n(0) {	// constructeur par défaut
-			std::cout << "Array Default constructor called." << std::endl;
+			// std::cout << "Array Default constructor called." << std::endl;
 			return; }
 
 		Array<T>(Array const &copy) {	// constructeur par copie
@@ -33,21 +55,21 @@ class Array					// classe mere/abstraite/concrete/interface
 			this->_n = 0;
 			this->_tab = NULL;
 			*this = copy;
-			std::cout << "Array Copy constructor called." << std::endl;
+			// std::cout << "Array Copy constructor called." << std::endl;
 			return; }
 
 		Array<T>(unsigned int n) {	// constructeur by param
 			if (static_cast<int>(n) <= 0)
-				throw Array<T>::IndexPb();
+				throw Array<T>::IndexInvalidCreation();
 			this->_n = n;
 			this->_tab = new T[this->_n];
-			std::cout << "Array Param constructor called." << std::endl;
+			// std::cout << "Array Param constructor called." << std::endl;
 			return; }
 
 		~Array<T>(void) {	// destructeur
 			if (this->_n)
 				delete [] _tab;
-			std::cout << "Array Destructor called." << std::endl;
+			// std::cout << "Array Destructor called." << std::endl;
 			return; }
 
 
@@ -58,18 +80,18 @@ class Array					// classe mere/abstraite/concrete/interface
 			this->_tab = new T[this->_n];
 			for (unsigned int i = 0; i < this->_n; i++) {
 				this->_tab[i] = rhs._tab[i]; }
-			std::cout << "Array Assignment operator called." << std::endl;
+			// std::cout << "Array Assignment operator called." << std::endl;
 			return (*this); }
 
 
 		T	&operator[](unsigned int index) {	//----------// surcharge opé d'indice
 			if (index >= this->size() || index < 0) {
-				throw Array<T>::IndexPb(); }
+				throw Array<T>::IndexInvalidRead(); }
 			return (this->_tab[index]); }
 
 		T const	&operator[](unsigned int index) const { //------// surcharge opé d'indice const !
 			if (index >= this->size() || index < 0) {
-				throw Array<T>::IndexPb(); }
+				throw Array<T>::IndexInvalidRead(); }
 			return (this->_tab[index]); }
 
 
@@ -80,10 +102,16 @@ class Array					// classe mere/abstraite/concrete/interface
 			return (this->_tab); }
 
 
-		class IndexPb : public std::exception	//------// Nested Class for exception
+		class IndexInvalidRead : public std::exception	//------// Nested Class for exception
 		{
 			virtual const char	*what() const throw() {
 				return ("Array index out of bound, exiting"); } 
+		};
+
+		class IndexInvalidCreation : public std::exception	//------// Nested Class for exception
+		{
+			virtual const char	*what() const throw() {
+				return ("Try to init Array<T> with invalid size, exiting"); } 
 		};
 
 	private :

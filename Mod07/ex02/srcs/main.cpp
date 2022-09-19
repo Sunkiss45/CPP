@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 20:25:51 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/16 23:08:07 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/19 13:45:56 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,172 +26,393 @@
 	// std::cout << &a << " = " << a << " | " << &b << " = " << b << std::endl;
 	// }
 
-//----------   MAIN DE CORRECTION   ----------//
-
-#include <iostream>
 #include "Array.tpp"
+
+std::string	ft_str_generator(void) {
+	unsigned size = (rand() % 6) + 5;
+	std::string	str;
+
+	for (unsigned int i = 0; i < size; i++) {
+		if (rand() % 2) {
+			str += 'A' + (rand() % 26); }
+		else {
+			str += 'a' + (rand() % 26); } }
+	return str; }
+
+//----------   MAIN DE CORRECTION   ----------//
 
 #define MAX_VAL 750
 int main(int, char**)
 {
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+	std::cout << std::endl << SRED << BRED << "\t\t\t" " ! MAIN CORRECTION ! " << RESET << std::endl << std::endl;
+	{
+		Array<int> numbers(MAX_VAL);
+		int* mirror = new int[MAX_VAL];
+		srand(time(NULL));
+		for (int i = 0; i < MAX_VAL; i++)
+		{
+			const int value = rand();
+			numbers[i] = value;
+			mirror[i] = value;
+		}
+		//SCOPE
+		{
+			Array<int> tmp = numbers;
+			Array<int> test(tmp);
+		}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+		for (int i = 0; i < MAX_VAL; i++)
+		{
+			if (mirror[i] != numbers[i])
+			{
+				std::cerr << "didn't save the same value!!" << std::endl;
+				return 1;
+			}
+		}
+		try
+		{
+			numbers[-2] = 0;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		try
+		{
+			numbers[MAX_VAL] = 0;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+		for (int i = 0; i < MAX_VAL; i++)
+		{
+			numbers[i] = rand();
+		}
+		delete [] mirror;//
+	}
+
+	std::cout << std::endl << SRED << BRED << "\t\t\t" " ! MAIN PERSO ! " << RESET << std::endl << std::endl;
+	{
+		srand(time(NULL));
+		
+		/*================================*/
+		/*            INT ARRAY           */
+		/*================================*/
+		
+		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in INT :" << RESET << std::endl << std::endl;
+		try {
+			unsigned int	n = 10;
+			std::cout << BYELLOW << "Creation of inttab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			Array<int>	inttab(n);
+			for (unsigned int i = 0; i < n; i++) {
+				inttab[i] = (rand() % 201) - 100; }
+
+			std::cout << BGREEN << "Display of inttab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << inttab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of inttab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << inttab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- inttab[" << n << "] = " << inttab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- inttab[-1] = " << inttab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Creation of c_inttab, copy of inttab.." << RESET << std::endl << std::endl;
+			Array<int>	c_inttab(inttab);
+
+			std::cout << BGREEN << "Display of c_inttab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << c_inttab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of c_inttab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_inttab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- c_inttab[" << n << "] = " << c_inttab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- c_inttab[-1] = " << c_inttab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Modification of the last data of c_inttab.." << RESET << std::endl << std::endl;
+			for (c_inttab[n-1] = rand() % 101; c_inttab[n-1] == inttab[n-1]; void()) {
+				c_inttab[n-1] = rand() % 101; }
+			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
+			std::cout << GREEN << "\t - inttab[" << n-1 << "] = " << CYAN << inttab[n-1] << std::endl;
+			std::cout << GREEN << "\t - c_inttab[" << n-1 << "] = " << CYAN << c_inttab[n-1] << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Display of inttab & c_inttab :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << inttab << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_inttab << RESET << std::endl; }
+		catch (std::exception &e) {
+			std::cout << SRED << BRED << "BIG ERROR ==> " << e.what() << std::endl; }
+
+		std::cout << std::endl << std::endl;
+		/*================================*/
+		/*           FLOAT ARRAY          */
+		/*================================*/
+
+		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in FLOAT :" << RESET << std::endl << std::endl;
+		try {
+			unsigned int	n = 5;
+			std::cout << BYELLOW << "Creation of floattab, contents [" << n << "] float randomly generated.." << RESET << std::endl << std::endl;
+			Array<float>	floattab(n);
+			for (unsigned int i = 0; i < n; i++) {
+				floattab[i] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); }
+
+			std::cout << BGREEN << "Display of floattab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << floattab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of floattab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << floattab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- floattab[" << n << "] = " << floattab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- floattab[-1] = " << floattab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Creation of c_floattab, copy of floattab.." << RESET << std::endl << std::endl;
+			Array<float>	c_floattab(floattab);
+
+			std::cout << BGREEN << "Display of c_floattab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << c_floattab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of c_floattab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_floattab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- c_floattab[" << n << "] = " << c_floattab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- c_floattab[-1] = " << c_floattab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Modification of the last data of c_floattab.." << RESET << std::endl << std::endl;
+			for (c_floattab[n-1] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); c_floattab[n-1] == floattab[n-1]; void()) {
+				c_floattab[n-1] = static_cast<double> (rand()) / (static_cast<double> (RAND_MAX/1000.0)); }
+			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
+			std::cout << GREEN << "\t - floattab[" << n-1 << "] = " << CYAN << floattab[n-1] << std::endl;
+			std::cout << GREEN << "\t - c_floattab[" << n-1 << "] = " << CYAN << c_floattab[n-1] << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Display of floattab & c_floattab :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << floattab << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_floattab << RESET << std::endl; }
+		catch (std::exception &e) {
+			std::cout << SRED << BRED << "BIG ERROR ==> " << e.what() << std::endl; }
+	
+		std::cout << std::endl << std::endl;
+		/*================================*/
+		/*           CHAR ARRAY           */
+		/*================================*/
+		
+		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in CHAR :" << RESET << std::endl << std::endl;
+		try {
+			unsigned int	n = 8;
+			std::cout << BYELLOW << "Creation of chartab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			Array<char>	chartab(n);
+			for (unsigned int i = 0; i < n; i++) {
+				chartab[i] = 'A' + (rand() % 26); }
+
+			std::cout << BGREEN << "Display of chartab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << chartab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of chartab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << chartab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- chartab[" << n << "] = " << chartab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- chartab[-1] = " << chartab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Creation of c_chartab, copy of chartab.." << RESET << std::endl << std::endl;
+			Array<char>	c_chartab(chartab);
+
+			std::cout << BGREEN << "Display of c_chartab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << c_chartab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of c_chartab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_chartab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- c_chartab[" << n << "] = " << c_chartab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- c_chartab[-1] = " << c_chartab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Modification of the last data of c_chartab.." << RESET << std::endl << std::endl;
+			for (c_chartab[n-1] = 'A' + (rand() % 26); c_chartab[n-1] == chartab[n-1]; void()) {
+				c_chartab[n-1] = 'A' + (rand() % 26); }
+			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
+			std::cout << GREEN << "\t - chartab[" << n-1 << "] = " << CYAN << chartab[n-1] << std::endl;
+			std::cout << GREEN << "\t - c_chartab[" << n-1 << "] = " << CYAN << c_chartab[n-1] << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Display of chartab & c_chartab :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << chartab << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_chartab << RESET << std::endl; }
+		catch (std::exception &e) {
+			std::cout << SRED << BRED << "BIG ERROR ==> " << e.what() << std::endl; }
+
+		std::cout << std::endl << std::endl;
+		/*================================*/
+		/*          STRING ARRAY          */
+		/*================================*/
+		
+		std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with Array in std::string :" << RESET << std::endl << std::endl;
+		try {
+			unsigned int	n = 3;
+			std::cout << BYELLOW << "Creation of stringtab, contents [" << n << "] int randomly generated.." << RESET << std::endl << std::endl;
+			Array<std::string>	stringtab(n);
+			for (unsigned int i = 0; i < n; i++) {
+				stringtab[i] = ft_str_generator(); }
+
+			std::cout << BGREEN << "Display of stringtab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << stringtab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of stringtab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << stringtab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- stringtab[" << n << "] = " << stringtab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- stringtab[-1] = " << stringtab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Creation of c_stringtab, copy of stringtab.." << RESET << std::endl << std::endl;
+			Array<std::string>	c_stringtab(stringtab);
+
+			std::cout << BGREEN << "Display of c_stringtab successive with operator [] :" << GREEN << std::endl << "\t";
+			for (unsigned int i = 0; i < n; i++) {
+				std::cout << c_stringtab[i];
+				if (i != n - 1) {
+					std::cout << " - "; } }
+			std::cout << RESET << std::endl << std::endl;
+
+			std::cout << BGREEN << "Display of c_stringtab with operator << :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_stringtab << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Try to display out of bound data :" << RESET << std::endl;
+			try {
+				std::cout << GREEN << "\t- c_stringtab[" << n << "] = " << c_stringtab[n] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t- c_stringtab[-1] = " << c_stringtab[-1] << RESET << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+
+			std::cout << std::endl;
+
+			std::cout << BYELLOW << "Modification of the last data of c_stringtab.." << RESET << std::endl << std::endl;
+			for (c_stringtab[n-1] = ft_str_generator(); c_stringtab[n-1] == stringtab[n-1]; void()) {
+				c_stringtab[n-1] = ft_str_generator(); }
+			std::cout << BGREEN << "Display it and compare to original :" << RESET << std::endl;
+			std::cout << GREEN << "\t - stringtab[" << n-1 << "] = " << CYAN << stringtab[n-1] << std::endl;
+			std::cout << GREEN << "\t - c_stringtab[" << n-1 << "] = " << CYAN << c_stringtab[n-1] << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << BGREEN << "Display of stringtab & c_stringtab :" << RESET << std::endl;
+			std::cout << GREEN << "\t" << stringtab << RESET << std::endl;
+			std::cout << GREEN << "\t" << c_stringtab << RESET << std::endl; }
+		catch (std::exception &e) {
+			std::cout << SRED << BRED << "BIG ERROR ==> " << e.what() << std::endl; }
+	}
+
+	std::cout << RESET << std::endl;
+	return 0;
 }
-
-
-
-// #include <cmath>
-// #include "Array.tpp"
-
-// #define RESET "\e[0m"
-// #define RED "\e[0;31m"
-// #define GREEN "\e[0;32m"
-// #define YELLOW "\e[0;33m"
-// #define BLUE "\e[0;34m"
-// #define PURPLE "\e[0;35m"
-// #define CYAN "\e[0;36m"
-
-// int main(void)
-// {
-// 	std::cout << std::endl << RED << "//----------   TYPE INT   ----------//" << RESET << std::endl;
-
-// 	Array<float>	floattab(5);
-// 	floattab[0] = 42.0f;
-// 	floattab[1] = 24.0f;
-// 	floattab[2] = 12.3333f;
-// 	floattab[3] = INFINITY;
-// 	floattab[4] = 33.8f;
-
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array de size 5" << RESET << std::endl;
-// 	std::cout << GREEN << "affichage via main" << RESET << std::endl;
-// 	unsigned int i;
-// 	i = 0;
-// 	while (i < floattab.size())
-// 	{
-// 		std::cout << "A[" << i << "] = " << floattab[i] << std::endl;	// affichage
-// 		i++;
-// 	}
-	
-// 	std::cout << GREEN << "affichage via fct non membre ostream" << RESET << std::endl;
-// 	std::cout << floattab << std::endl;
-
-// 	std::cout << std::endl << YELLOW << "essayons d'avoir acces au A[5]..." << RESET << std::endl;
-// 	try
-// 	{
-// 		floattab[floattab.size()];
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << e.what() << std::endl;
-// 	}
-
-// 	std::cout << std::endl << RED << "//----------   TYPE STRING   ----------" << RESET << std::endl;
-
-// 	Array<std::string>	strtab(3);
-// 	strtab[0] = "Hello,\0";
-// 	strtab[1] = "Bonjour !\0";
-// 	strtab[2] = "Coucou.\0";
-
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array de size 3" << RESET << std::endl;
-// 	std::cout << GREEN << "affichage via main" << RESET << std::endl;
-// 	i = 0;
-// 	while (i < strtab.size())
-// 		std::cout << strtab[i++] << std::endl;
-// 	std::cout << GREEN << "affichage via fct non membre ostream" << RESET << std::endl;
-// 	std::cout << strtab << std::endl;
-
-// 	std::cout << std::endl << YELLOW <<  "test du constructeur par copie" << RESET << std::endl;
-// 	Array<std::string>	cpy(strtab);
-
-// 	i = 0;
-// 	while (i < strtab.size())
-// 		std::cout << strtab[i++] << std::endl;
-	
-// 	std::cout << std::endl << RED << "//----------   TYPE BOOL   ----------" << RESET << std::endl;
-
-// 	Array<bool> b(2);
-// 	b[0] = true;
-// 	b[1] = false;
-
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array de size 2" << RESET << std::endl;
-// 	std::cout << GREEN << "affichage via main" << RESET << std::endl;
-// 	i = 0;
-// 	while (i < b.size())
-// 		std::cout << b[i++] << std::endl;
-
-// 	std::cout << GREEN << "affichage via fct non membre ostream" << RESET << std::endl;
-// 	std::cout << b << std::endl;
-
-// 	std::cout << std::endl << RED << "//------------   Test du Constructeur par défaut   -----------//" << RESET << std::endl;
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array NULL" << RESET << std::endl;
-// 	Array<int> j;
-// 	std::cout << j << std::endl;
-
-// 	std::cout << std::endl << RED << "//------------   Test d'erreur   -----------//" << RESET << std::endl;
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array de size 0" << RESET << std::endl;
-// 	try
-// 	{
-// 		Array<int> k(0);
-// 		std::cout << k << std::endl;
-// 	}
-// 	catch (std::exception & e)
-// 	{
-// 		std::cerr << e.what() << std::endl;
-// 	}
-
-// 	std::cout << std::endl << YELLOW <<  "creation d'un array de size negative" << RESET << std::endl;
-// 	try
-// 	{
-// 		Array<int> k(-1);
-// 		std::cout << k << std::endl;
-// 	}
-// 	catch (std::exception & e)
-// 	{
-// 		std::cerr << e.what() << std::endl;
-// 	}
-// 	std::cout << std::endl;
-// }
