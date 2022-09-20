@@ -6,113 +6,136 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 22:53:47 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/16 23:12:40 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/20 15:31:02 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "EasyFind.hpp"
-
-//----------   MAIN EXTENDED   ----------//
+#include "ft_color.hpp"
 
 void	displayInt(int i)
 {
-	std::cout << i << std::endl;
+	std::cout << i << " ";
 }
 
-int		main() {
-	std::cout << std::endl << RED << "//-----   CONTAINER = LIST   -----//" << RESET << std::endl;
-	try
+int	main() {
+	unsigned int size = 10;
+	
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with std::list :" << RESET << std::endl << std::endl;
 	{
+		srand(time(NULL));
+
+		std::cout << IPURPLE << "Creation of std::list<int> lst, contents [" << size << "] elements randomly generated.." << RESET << std::endl;
 		std::list<int>	lst;
-		int				i = 0;
-		
-		std::cout << std::endl << YELLOW << "//---   creation et affichage d'une liste d'int multiple de 3   ---//" << RESET << std::endl;
 
-		//-----> creation de la liste
-		while (i < 50)
-		{
-			lst.push_back(i);
-			i += 3;
-		}
-		//-----> affichage via for_each
-		
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			for (unsigned int i = 0; i < size; i++) {
+				lst.push_back(rand() % 10); } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of lst with fct for_each(..) :" << std::endl << BBLUE << "\t" "[ " << CYAN;
 		for_each(lst.begin(), lst.end(), displayInt);
+		std::cout << BBLUE << "]" << RESET << std::endl;
 
-		std::cout << std::endl << YELLOW << "//---   on cherche des valeurs présentes   ---//" << RESET << std::endl;
+		std::cout << std::endl;
 
-		std::cout << *easyfind(lst, 27) << std::endl;
-		std::cout << *easyfind(lst, 15) << std::endl;
-		std::cout << *easyfind(lst, 0) << std::endl;
+		std::cout << BGREEN << "Execute fct easyfind(..) on range of 10 number (0 - 9) :" << GREEN << std::endl;
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			std::cout << BBLUE << "\t" "Try to find :" << RESET << std::endl;
+			for (unsigned int i = 0; i < 10; i++) {
+				try {
+					std::cout << BBLUE << "\t\t" << i << " -> " << GREEN << *easyfind(lst, i) << std::endl; }
+				catch (std::exception &e) {
+					std::cout << BRED<< e.what() << std::endl; } } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
 
-		std::cout << std::endl << YELLOW << "//---   on cherche des valeurs absentes   ---//" << RESET << std::endl;
-		try
-		{
-			std::cout << "On cherche 7 : " << *easyfind(lst, 7) << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-		try
-		{
-			std::cout << "On cherche 40 : " << *easyfind(lst, 40) << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+		std::cout << std::endl;
 	}
-	catch (std::exception &e)
+
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with std::vector :" << RESET << std::endl << std::endl;
 	{
-		std::cout << e.what() << std::endl;
-	}
-//--------------------//
-	std::cout << std::endl << RED << "//-----   CONTAINER = VECTOR int   -----//" << RESET << std::endl;
-	try
-	{
+		srand(time(NULL));
+
+		std::cout << IPURPLE << "Creation of std::vector<int> vec, contents [" << size << "] elements randomly generated.." << RESET << std::endl;
 		std::vector<int>	vec;
-		int					i = 0;
-		int					j = 0;
-		
-		std::cout << std::endl << YELLOW << "//---   creation et affichage d'un vecteur de 10 entrées contenant des multiples de 5   ---//" << RESET << std::endl;
 
-		//-----> creation du tableau
-		while (i < 10)
-		{
-			vec.push_back(j);
-			i++;
-			j += 5;
-		}
-		//-----> affichage via for_each
-		
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			for (unsigned int i = 0; i < size; i++) {
+				vec.push_back(rand() % 10); } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of vec with fct for_each(..) :" << std::endl << BBLUE << "\t" "[ " << CYAN;
 		for_each(vec.begin(), vec.end(), displayInt);
+		std::cout << BBLUE << "]" << RESET << std::endl;
 
-		std::cout << std::endl << YELLOW << "//---   on cherche des valeurs présentes   ---//" << RESET << std::endl;
+		std::cout << std::endl;
 
-		std::cout << *easyfind(vec, 25) << std::endl;
-		std::cout << *easyfind(vec, 15) << std::endl;
-		std::cout << *easyfind(vec, 0) << std::endl;
+		std::cout << BGREEN << "Execute fct easyfind(..) on range of 10 number (0 - 9) :" << GREEN << std::endl;
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			std::cout << BBLUE << "\t" "Try to find :" << RESET << std::endl;
+			for (unsigned int i = 0; i < 10; i++) {
+				try {
+					std::cout << BBLUE << "\t\t" << i << " -> " << GREEN << *easyfind(vec, i) << std::endl; }
+				catch (std::exception &e) {
+					std::cout << BRED<< e.what() << std::endl; } } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
 
-		std::cout << std::endl << YELLOW << "//---   on cherche des valeurs absentes   ---//" << RESET << std::endl;
-		try
-		{
-			std::cout << "On cherche 23 : " << *easyfind(vec, 23) << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
-		try
-		{
-			std::cout << "On cherche 42 : " << *easyfind(vec, 42) << std::endl;
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+		std::cout << std::endl;
 	}
-	catch (std::exception &e)
+
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << "Tests with std::deque :" << RESET << std::endl << std::endl;
 	{
-		std::cout << e.what() << std::endl;
+		srand(time(NULL));
+
+		std::cout << IPURPLE << "Creation of std::deque<int> deq, contents [" << size << "] elements randomly generated.." << RESET << std::endl;
+		std::deque<int>	deq;
+
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			for (unsigned int i = 0; i < size; i++) {
+				deq.push_back(rand() % 10); } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of deq with fct for_each(..) :" << std::endl << BBLUE << "\t" "[ " << CYAN;
+		for_each(deq.begin(), deq.end(), displayInt);
+		std::cout << BBLUE << "]" << RESET << std::endl;
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Execute fct easyfind(..) on range of 10 number (0 - 9) :" << GREEN << std::endl;
+		try {
+			if (static_cast<int>(size) <= 0) {
+				throw (ErrorNotEnough()); }
+			std::cout << BBLUE << "\t" "Try to find :" << RESET << std::endl;
+			for (unsigned int i = 0; i < 10; i++) {
+				try {
+					std::cout << BBLUE << "\t\t" << i << " -> " << GREEN << *easyfind(deq, i) << std::endl; }
+				catch (std::exception &e) {
+					std::cout << BRED<< e.what() << std::endl; } } }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+
+		std::cout << std::endl;
 	}
-	return (0); }
+	return 0;
+}

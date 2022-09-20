@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 23:19:13 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 00:44:21 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/20 18:19:41 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,30 @@ class Span					// classe mere/abstraite/concrete/interface
 
 		Span &operator=(Span const &rhs);					// surcharge d'assignation
 
+		unsigned int	size(void) const;
+		std::vector<int>	getvec(void) const;
+
 		void	addNumber(int i);
 		int		shortestSpan(void);
 		int		longestSpan(void);
-		void	rangeIter(unsigned int x);
+		void	rangeGen(void);
 
-		class ReachMaxSize : public std::exception
+		class ErrorMaxSize : public std::exception
 		{
 			virtual const char	*what() const throw() {
-				return ("Reach maximal size of this container !"); }
+				return ("Code error 00 : Reach maximal size"); }
 		};
 
-		class Impossible : public std::exception
+		class ErrorNotEnough : public std::exception
 		{
 			virtual const char	*what() const throw() {
-				return ("Imposible to do this action !"); }
+				return ("Code error 01 : Not enough value"); }
+		};
+
+		class ErrorNotValid : public std::exception
+		{
+			virtual const char	*what() const throw() {
+				return ("Code error 02 : Not valid value"); }
 		};
 
 	private :
@@ -52,3 +61,6 @@ class Span					// classe mere/abstraite/concrete/interface
 		unsigned int		_n;
 		
 };
+std::ostream &operator<<(std::ostream &out, Span const &rhs);
+
+int	little_rand(void);

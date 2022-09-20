@@ -6,11 +6,12 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 00:38:29 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 00:42:53 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:17:42 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include "ft_color.hpp"
 
 #define RESET "\e[0m"
 #define RED "\e[0;31m"
@@ -20,9 +21,9 @@
 #define PURPLE "\e[0;35m"
 #define CYAN "\e[0;36m"
 
-int main()
-{
-	std::cout << std::endl << RED << "TEST DU SUJET : que des int positifs, ajout au container via addNumber" << RESET << std::endl;
+int	main() {
+
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << " ! SUBJECT TEST ! " << RESET << std::endl << std::endl;
 	{
 		Span sp = Span(5);
 
@@ -32,90 +33,161 @@ int main()
 		sp.addNumber(9);
 		sp.addNumber(11);
 
-		std::cout << "short :	" << sp.shortestSpan() << std::endl;
-		std::cout << "long :	" << sp.longestSpan() << std::endl;
+		std::cout << "[ " << sp << " ]" << std::endl;
+		std::cout << "short :\t" << sp.shortestSpan() << std::endl;
+		std::cout << "long :\t" << sp.longestSpan() << std::endl;
 	}
-	std::cout << std::endl << RED << "TEST 1 : int positifs et negatifs, ajout au container via addNumber" << RESET << std::endl;
+
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << " ! PERSONAL TEST ! " << RESET << std::endl << std::endl;
+	
+	srand(time(NULL));
+	
+	std::cout << std::endl << SGREEN << BGREEN << "Test with 5 random numbers :" << RESET << std::endl << std::endl;
 	{
-		Span sp = Span(7);
+		unsigned int size = 5;
 
-		sp.addNumber(-8);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(-3);
-		sp.addNumber(11);
+		std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+		Span sp = Span(size);
+		sp.rangeGen();
+		
+		std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+		std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
 
-		std::cout << "short :	" << sp.shortestSpan() << std::endl;
-		std::cout << "long :	" << sp.longestSpan() << std::endl;
+		std::cout << std::endl;
+
+		std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl;
+		std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl;
 	}
-	std::cout << std::endl << RED << "TEST 2 : int positifs, ajout au container via boucle d'addNumber" << RESET << std::endl;
+
+	std::cout << std::endl << SGREEN << BGREEN << "Test with 100 random numbers :" << RESET << std::endl << std::endl;
 	{
-		Span	span(3);
-		int		i = 0;
-		try
-		{
-			while (i < 10)
-			{
-				span.addNumber(i);
-				i += 3;
-			}
-		}
-		catch(std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-		try
-		{
-			std::cout << "short :	" << span.shortestSpan() << std::endl;
-			std::cout << "long :	" << span.longestSpan() << std::endl;
-		}
-		catch(std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		unsigned int size = 100;
+
+		std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+		Span sp = Span(size);
+		sp.rangeGen();
+		
+		std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+		std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+
+		std::cout << std::endl;
+
+		std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl;
+		std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl;
 	}
 
-	std::cout << std::endl << RED << "TEST 3 : ajout au container via range iterator" << RESET << std::endl;
+	std::cout << std::endl << SGREEN << BGREEN << "Test with 10000 random numbers :" << RESET << std::endl << std::endl;
 	{
-		try
-		{
-			std::cout << YELLOW << "1) cree un vector containeur via Classe Span de taille 105" << RESET << std::endl;
-			Span	rangespan(105);
+		unsigned int size = 10000;
 
-			std::cout << YELLOW << "2) remplit mon vector avec 100 nombres random" << RESET << std::endl;
-			rangespan.rangeIter(100);
-			std::cout << "short :	" << rangespan.shortestSpan() << std::endl;
-			std::cout << "long :	" << rangespan.longestSpan() << std::endl;
+		std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+		Span sp = Span(size);
+		sp.rangeGen();
+		
+		std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+		//std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+		std::cout << BRED << "\t" "PLEASE MODIFY MAIN FOR DISPLAY" << RESET << std::endl;
 
-			std::cout << YELLOW << "3)test : on ajoute 6 nb (donc un en trop...) avec addNumber (min -42, max 1000)" << RESET << std::endl;
-			try
-			{
-				rangespan.addNumber(-25);
-				rangespan.addNumber(515);
-				rangespan.addNumber(1000);
-				rangespan.addNumber(-42);
-				rangespan.addNumber(210);
-				rangespan.addNumber(-300);
-			}
-			catch(std::exception &e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
-			try
-			{
-				std::cout << "short :	" << rangespan.shortestSpan() << std::endl;
-				std::cout << "long :	" << rangespan.longestSpan() << std::endl;
-			}
-			catch(std::exception &e)
-			{
-				std::cerr << e.what() << std::endl;
-			}
-		}
-		catch (std::exception &e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+		std::cout << std::endl;
+
+		std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl;
+		std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl;
 	}
 
-	return (0);
+	std::cout << std::endl;
+	std::cout << std::endl << SGREEN << BGREEN << "Tests of diffrent ERROR :" << RESET << std::endl << std::endl;
+	{
+		{
+			unsigned int size = 5;
+
+			std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+			Span sp = Span(size);
+			sp.rangeGen();
+			
+			std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+			std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl;
+			std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl; 
+			
+			std::cout << std::endl;
+			
+			std::cout << IPURPLE << "Try to addNumber(0) to sp .." << RESET << std::endl;
+			try {
+				sp.addNumber(0); }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+		}
+
+		std::cout << std::endl;
+
+		{
+			unsigned int size = 0;
+
+			std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+			Span sp = Span(size);
+			sp.rangeGen();
+			
+			std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+			std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			try {
+				std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+		}
+
+		std::cout << std::endl;
+
+		{
+			unsigned int size = 1;
+
+			std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+			Span sp = Span(size);
+			sp.rangeGen();
+			
+			std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+			std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			try {
+				std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+			try {
+				std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl; }
+			catch (std::exception &e) {
+				std::cout << BRED << e.what() << RESET << std::endl; }
+		}
+
+		std::cout << std::endl;
+
+		try {
+			unsigned int size = -1;
+
+			std::cout << IPURPLE << "Creation Span sp, contents [" << size << "] elements randomly generated.." << RESET << std::endl << std::endl;
+			Span sp = Span(size);
+			sp.rangeGen();
+			
+			std::cout << BGREEN << "Display of sp with opertor << :" << std::endl;
+			std::cout << BBLUE << "\t" "[ " << CYAN << sp << BBLUE << " ]" << RESET << std::endl;
+
+			std::cout << std::endl;
+
+			std::cout << GREEN << "\t" "execute sp.shortestSpan() : " << GREEN << sp.shortestSpan() << std::endl;
+			std::cout << GREEN << "\t" "execute sp.longestSpan() : " << GREEN << sp.longestSpan() << std::endl; }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << RESET << std::endl;
+		}
+	}
+	return 0;
 }

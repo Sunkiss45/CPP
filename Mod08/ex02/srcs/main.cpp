@@ -6,141 +6,234 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 01:01:06 by ebarguil          #+#    #+#             */
-/*   Updated: 2022/09/17 01:05:58 by ebarguil         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:02:26 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_color.hpp"
+#include "EasyFind.hpp"
 #include "MutantStack.hpp"
-#include <list>
-
-#define RESET "\e[0m"
-#define RED "\e[0;31m"
-#define GREEN "\e[0;32m"
-#define YELLOW "\e[0;33m"
-#define BLUE "\e[0;34m"
-#define PURPLE "\e[0;35m"
-#define CYAN "\e[0;36m"
-#define ORANGE "\e[38;2;255;165;0m"
 
 int main()
 {
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << " ! SUBJECT TEST ! " << RESET << std::endl << std::endl;
 	{
-		std::cout << std::endl << RED << "TEST DU SUJET" << RESET << std::endl;
-		std::cout << std::endl << GREEN << "Avec la MutantStack !" << RESET << std::endl;
+		MutantStack<int> mstack;
 
-		MutantStack<int>	mstack;
-
-		std::cout << std::endl << ORANGE << "1) On cree une stack et on y entre 2 valeurs" << RESET << std::endl;
-		std::cout << "is the stack empty ? true = 1 / false = 0 --> " << mstack.empty() << std::endl;
 		mstack.push(5);
 		mstack.push(17);
-		std::cout << "size :		" << mstack.size() << std::endl;	
-		std::cout << "top value :	" << mstack.top() << std::endl;
 
-		std::cout << std::endl << ORANGE << "2) On retire la valeur du top de la stack" << RESET << std::endl;
+		std::cout << mstack.top() << std::endl;
+
 		mstack.pop();
-		std::cout  << "size :		" << mstack.size() << std::endl;
-		std::cout << "top value :	" << mstack.top() << std::endl;
 
-		std::cout << std::endl << ORANGE << "3) On ajoute plein de valeurs" << RESET << std::endl;
+		std::cout << mstack.size() << std::endl;
+
 		mstack.push(3);
 		mstack.push(5);
 		mstack.push(737);
-		mstack.push(42);
-		mstack.push(4242);
-		mstack.push(24);
-		mstack.push(2424);
+		//[...]
 		mstack.push(0);
 
-		std::cout  << "size :		" << mstack.size() << std::endl;
-		std::cout << "top value :	" << mstack.top() << std::endl;
-
-		std::cout << std::endl << ORANGE << "4) On affiche le contenu de la stack (bottom to top) grace au MutantStack Iterator !" << RESET << std::endl;	
 		MutantStack<int>::iterator it = mstack.begin();
 		MutantStack<int>::iterator ite = mstack.end();
+
+		++it;
+		--it;
 		while (it != ite)
 		{
 			std::cout << *it << std::endl;
 			++it;
 		}
-		std::cout << "is the stack empty ? true = 1 / false = 0 --> " << mstack.empty() << std::endl;
-
-	//---------------------------//
-
-		std::cout << std::endl << GREEN << "Test du constructeur par copie" << RESET << std::endl;
-		MutantStack<int>	copystack = mstack;
-
-		std::cout  << "size :		" << copystack.size() << std::endl;
-		std::cout << "top value :	" << copystack.top() << std::endl;
-
-		std::cout << std::endl << ORANGE << "4) On affiche le contenu de copystack (bottom to top) grace au MutantStack Iterator !" << RESET << std::endl;	
-		// MutantStack<int>::iterator itc = copystack.begin();
-		// MutantStack<int>::iterator itec = copystack.end();
-		it = copystack.begin();
-		ite = copystack.end();
-		while (it != ite)
-		{
-			std::cout << *it << std::endl;
-			++it;
-		}
-	//---------------------------//
-		std::cout << std::endl << GREEN << "Avec la stack originelle !" << RESET << std::endl;
-		
-		std::stack<int>	s(mstack);
-		std::cout << std::endl << ORANGE << "1) On cree une stack de type stack originelle, copie de notre mutantStack" << RESET << std::endl;
-		std::cout << "size :		" << s.size() << std::endl;	
-		std::cout << "top value :	" << s.top() << std::endl;
-
-		std::cout << std::endl << ORANGE << "2) On retire la valeur du top de la stack" << RESET << std::endl;
-		s.pop();
-		std::cout  << "size :		" << s.size() << std::endl;
-		std::cout << "top value :	" << s.top() << std::endl;
-
-		std::cout << std::endl << ORANGE << "3) On ajoute une valeur" << RESET << std::endl;
-		s.push(258963);
-
-		std::cout  << "size :		" << s.size() << std::endl;
-		std::cout << "top value :	" << s.top() << std::endl;
+		std::stack<int> s(mstack);
 	}
-//---------------------------//
-	{
-		std::cout << std::endl << RED << "COMPARAISON AVEC CONTAINER LIST" << RESET << std::endl;
 	
-		std::list<int>	lst;
+	std::cout << std::endl << "compare to std::vector" << std::endl << std::endl;
 
-		std::cout << std::endl << ORANGE << "1) On cree une list et on y entre 2 valeurs" << RESET << std::endl;
-		lst.push_back(5);
-		lst.push_back(17);
-		std::cout << "size :		" << lst.size() << std::endl;	
-		std::cout << "top value :	" << lst.back() << std::endl;
+	{
+		std::vector<int> mstack;
 
-		std::cout << std::endl << ORANGE << "2) On retire la valeur du back de la lst ( = top de la stack !)" << RESET << std::endl;
-		lst.pop_back();
-		std::cout  << "size :		" << lst.size() << std::endl;
-		std::cout << "top value :	" << lst.back() << std::endl;
+		mstack.push_back(5);
+		mstack.push_back(17);
 
-		std::cout << std::endl << ORANGE << "3) On ajoute plein de valeurs" << RESET << std::endl;
-		lst.push_back(3);
-		lst.push_back(5);
-		lst.push_back(737);
-		lst.push_back(42);
-		lst.push_back(4242);
-		lst.push_back(24);
-		lst.push_back(2424);
-		lst.push_back(0);
+		std::cout << mstack.back() << std::endl;
 
-		std::cout  << "size :		" << lst.size() << std::endl;
-		std::cout << "top value :	" << lst.back() << std::endl;
+		mstack.pop_back();
 
-		std::cout << std::endl << ORANGE << "4) On affiche le contenu de la stack (bottom to top) grace au MutantStack Iterator !" << RESET << std::endl;	
-		std::list<int>::iterator itl = lst.begin();
-		std::list<int>::iterator itel = lst.end();
-		while (itl != itel)
+		std::cout << mstack.size() << std::endl;
+
+		mstack.push_back(3);
+		mstack.push_back(5);
+		mstack.push_back(737);
+		//[...]
+		mstack.push_back(0);
+
+		std::vector<int>::iterator it = mstack.begin();
+		std::vector<int>::iterator ite = mstack.end();
+
+		++it;
+		--it;
+		while (it != ite)
 		{
-			std::cout << *itl << std::endl;
-			++itl;
+			std::cout << *it << std::endl;
+			++it;
 		}
 	}
 
+	std::cout << std::endl << "\t\t" << SGREEN << BGREEN << " ! PERSONAL TEST ! " << RESET << std::endl << std::endl;
+
+	/*================================*/
+	/*            INT TEST            */
+	/*================================*/
+
+	std::cout << BGREEN << SGREEN << "Test with int :" << RESET << std::endl;
+	{
+		unsigned int size = 10;
+
+		std::cout << IPURPLE << "Creation of MutantStack<int> mstack and std::vector<int> verify with same elements randomly generated.." << RESET << std::endl;
+		srand(time(NULL));
+		MutantStack<int>	mstack = IntGenMutantStack(size);
+		srand(time(NULL));
+		std::vector<int>		verify = IntGenVector(size);
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of mstack and verify :" << RESET << std::endl;
+
+		{
+			MutantStack<int>::iterator it = mstack.begin();
+			MutantStack<int>::iterator ite = mstack.end();
+			std::cout << GREEN << "\t" "mstack = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != ite - 1) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		{
+			std::vector<int>::iterator it = verify.begin();
+			std::vector<int>::iterator ite = verify.end();
+			std::vector<int>::iterator itex = --verify.end();
+			std::cout << GREEN << "\t" "verify = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != itex) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		std::cout << GREEN << "\t" "mstack.begin = " << CYAN << *mstack.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "verify.begin = " << CYAN << *verify.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--mstack.end = " << CYAN << *--mstack.end() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--verify.end = " << CYAN << *--verify.end() << RESET << std::endl;
+
+		std::cout << std::endl;
+
+		std::cout << IPURPLE << "Choosing a random data of verify and try easyFind() on mstac.." << std::endl;
+
+		int r = verify[rand() % size];
+		std::cout << GREEN << "\t" "Value choose = " << CYAN << r << RESET << std::endl;
+		try {
+			std::cout << GREEN << "\t" "easyFind(" << r << ") = " << CYAN << *easyfind(mstack, r) << std::endl; }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+		try {
+			std::cout << GREEN << "\t" "easyFind(999999) = " << CYAN << *easyfind(mstack, 999999) << std::endl; }
+		catch (std::exception &e) {
+			std::cout << BRED << e.what() << std::endl; }
+	}
+
+	std::cout << std::endl << std::endl;
+	/*================================*/
+	/*           FLOAT TEST           */
+	/*================================*/
+
+	std::cout << BGREEN << SGREEN << "Test with float :" << RESET << std::endl;
+	{
+		unsigned int size = 5;
+
+		std::cout << IPURPLE << "Creation of MutantStack<float> mstack and std::vector<float> verify with same elements randomly generated.." << RESET << std::endl;
+		srand(time(NULL));
+		MutantStack<float>	mstack = FloatGenMutantStack(size);
+		srand(time(NULL));
+		std::vector<float>		verify = FloatGenVector(size);
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of mstack and verify :" << RESET << std::endl;
+
+		{
+			MutantStack<float>::iterator it = mstack.begin();
+			MutantStack<float>::iterator ite = mstack.end();
+			std::cout << GREEN << "\t" "mstack = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != ite - 1) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		{
+			std::vector<float>::iterator it = verify.begin();
+			std::vector<float>::iterator ite = verify.end();
+			std::vector<float>::iterator itex = --verify.end();
+			std::cout << GREEN << "\t" "verify = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != itex) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		std::cout << GREEN << "\t" "mstack.begin = " << CYAN << *mstack.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "verify.begin = " << CYAN << *verify.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--mstack.end = " << CYAN << *--mstack.end() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--verify.end = " << CYAN << *--verify.end() << RESET << std::endl;
+	}
+
+	std::cout << std::endl << std::endl;
+	/*================================*/
+	/*          STRING TEST           */
+	/*================================*/
+
+	std::cout << BGREEN << SGREEN << "Test with std::string :" << RESET << std::endl;
+	{
+		unsigned int size = 5;
+
+		std::cout << IPURPLE << "Creation of MutantStack<std::string> mstack and std::vector<std::string> verify with same elements randomly generated.." << RESET << std::endl;
+		srand(time(NULL));
+		MutantStack<std::string>	mstack = StrGenMutantStack(size);
+		srand(time(NULL));
+		std::vector<std::string>		verify = StrGenVector(size);
+
+		std::cout << std::endl;
+
+		std::cout << BGREEN << "Display of mstack and verify :" << RESET << std::endl;
+
+		{
+			MutantStack<std::string>::iterator it = mstack.begin();
+			MutantStack<std::string>::iterator ite = mstack.end();
+			std::cout << GREEN << "\t" "mstack = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != ite - 1) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		{
+			std::vector<std::string>::iterator it = verify.begin();
+			std::vector<std::string>::iterator ite = verify.end();
+			std::vector<std::string>::iterator itex = --verify.end();
+			std::cout << GREEN << "\t" "verify = " << BBLUE << "[ " << CYAN;
+			for (void (); it != ite; it++) {
+				std::cout << *it;
+				if (it != itex) {
+					std::cout << ", "; } }
+			std::cout << BBLUE << " ]" << RESET << std::endl;
+		}
+		std::cout << GREEN << "\t" "mstack.begin = " << CYAN << *mstack.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "verify.begin = " << CYAN << *verify.begin() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--mstack.end = " << CYAN << *--mstack.end() << RESET << std::endl;
+		std::cout << GREEN << "\t" "--verify.end = " << CYAN << *--verify.end() << RESET << std::endl;
+	}
+
+	std::cout << std::endl;
 	return 0;
 }
