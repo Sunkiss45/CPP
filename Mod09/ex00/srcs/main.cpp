@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:23:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/05/25 17:01:09 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/05/26 02:15:34 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int ac, char **av) {
 
 	std::ifstream input_file(av[1], std::ifstream::in);
 	if (!input_file.is_open()) {
-		std::cerr << BRED << "Error input file ! could not open file." << RESET << std::endl;
+		std::cerr << BRED << "Error input file ! Could not open file (not exist or access forbidden)." << RESET << std::endl;
 		return (1); }
 
 	BitcoinExchange	BitcoinExchange;
