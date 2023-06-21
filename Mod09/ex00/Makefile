@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 13:54:45 by ebarguil          #+#    #+#              #
-#    Updated: 2023/05/25 16:41:44 by ebarguil         ###   ########.fr        #
+#    Updated: 2023/06/21 16:20:13 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ fclean		:	clean
 				$(RM) $(NAME)
 
 fsa			:	fclean obj $(OBJ)
-				$(CXX) $(CXFLAGS) $(CXDEP) $(CFA) -o $(NAME) $(SRC)
+				$(CXX) $(CXFLAGS) $(CFA) -o $(NAME) $(SRC)
 
 re			:	fclean all
 

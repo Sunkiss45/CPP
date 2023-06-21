@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:32:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/05/26 03:03:22 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/21 18:49:24 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_color.hpp"
 
 BitcoinExchange::BitcoinExchange() {
-	this->_data = "data.csv";
+	this->_datafile = "data.csv";
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -55,16 +55,17 @@ bool	BitcoinExchange::IsValidDate(int y, int m, int d) {
 	return true;
 }
 
-void	BitcoinExchange::parsing() {
+void	BitcoinExchange::parsingData() {
 	std::ifstream data_file(this->GetData().c_str(), std::ifstream::in);
 	if (!data_file.is_open()) {
 		throw (DataCantOpen()); }
 	
 	std::string	l;
 	std::getline(data_file, l);
-	int	e;
+	if (l != "date,exchange_rate") {
+		throw(DataHeaderError()); }
 
-	for(e = 1; std::getline(data_file, l); e++) {
+	while (std::getline(data_file, l)) {
 		std::stringstream rest(l);
 		std::string date, value;
 		std::getline(rest, date, ',');
@@ -75,14 +76,87 @@ void	BitcoinExchange::parsing() {
 		char sep[2];
 		dateS >> y >> sep[0] >> m >> sep[1] >> d;
 		if (dateS.fail() || dateS.get() == false
-		|| sep[0] != '-' || sep[1] != '-') {
+		|| sep[0] != '-' || sep[1] != '-'
+		|| !IsValidDate(y, m, d)) {
 			throw (DataLineError()); }
-		if (!IsValidDate(y, m, d)) {
+
+		std::stringstream valueS(value);
+		float val;
+		valueS >> val;
+		if (valueS.fail() || val < 0) {
 			throw (DataLineError()); }
+
+		this->_data[date] = val;
+	}
+
+	return;
+}
+
+void	BitcoinExchange::parsingInput(char *f) {
+
+	std::ifstream input_file(f, std::ifstream::in);
+	if (!input_file.is_open()) {
+		throw(InputCantOpen()); }
+
+	std::string l;
+	std::getline(input_file, l);
+	if (l != "date | value") {
+		throw(InputHeaderError()); }
+
+	int er = 0;
+
+	while (std::getline(input_file, l)) {
+		try {
+			if (l.empty()) {
+				throw (InputLineEmptyError()); }
+			
+			if (l.find(" | ") == std::string::npos) {
+				er = 1;
+				throw (InputBadInputError()); }
+			
+			std::string date;
+			date = l.substr(0, l.find(" | "));
+			std::stringstream dateS(date);
+			int y, m, d;
+			char sep[2];
+			dateS >> y >> sep[0] >> m >> sep[1] >> d;
+			if (dateS.fail() || dateS.get() == false
+			|| sep[0] != '-' || sep[1] != '-'
+			|| !IsValidDate(y, m, d)) {
+				er = 1;
+				throw (InputDateError()); }
+			
+			std::string value;
+			value = l.substr(l.find(" | ") + 3);
+			std::stringstream valueS(value);
+			float	val;
+			int		sun = 0;
+			std::string	end;
+			valueS >> val;
+			if (valueS.fail()) {
+				sun = 1; }
+			valueS >> val >> end;
+
+			std::cout << BCYAN << "[" << val << "] - " << BGREEN << "[" << end << "]" << RESET << std::endl;
+			
+			if ((sun == 1 && (!end.empty() || val == 0)) || !end.empty()) {
+				er = 1;
+				throw (InputValueError()); }
+			else if (val < 0) {
+				throw (InputNegValueError()); }
+			else if (val > 1000) {
+				throw (InputBigValueError()); }
+		}
+		catch(const std::exception& e) {
+			std::cerr << BYELLOW << e.what();
+			if (er == 1) {
+				std::cerr << l; 
+				er = 0; }
+			std::cerr << RESET << std::endl; }
 	}
 
 	return;
 }
 
 std::string	BitcoinExchange::GetData() {
-	return (this->_data); }
+	return (this->_datafile); }

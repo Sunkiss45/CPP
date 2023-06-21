@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:23:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/05/26 02:15:34 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:54:19 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,33 @@ int	main(int ac, char **av) {
 		std::cerr << BRED << "Error in use ! ./btc <input file>" << RESET << std::endl;
 		return (1); }
 
-	std::ifstream input_file(av[1], std::ifstream::in);
-	if (!input_file.is_open()) {
-		std::cerr << BRED << "Error input file ! Could not open file (not exist or access forbidden)." << RESET << std::endl;
-		return (1); }
+	// std::ifstream input_file(av[1], std::ifstream::in);
+	// if (!input_file.is_open()) {
+	// 	std::cerr << BRED << "Error input file ! Could not open file (not exist or access forbidden)." << RESET << std::endl;
+	// 	return (1); }
 
 	BitcoinExchange	BitcoinExchange;
 
 	try {
-		BitcoinExchange.parsing();
+		BitcoinExchange.parsingData();
 	}
 	catch(const std::exception& e) {
 		std::cerr << BRED << e.what() << RESET << std::endl;
 		return (1); }
+	
+	try {
+		BitcoinExchange.parsingInput(av[1]);
+	}
+	catch(const std::exception& e) {
+		std::cerr << BRED << e.what() << RESET << std::endl;
+		return (1); }
+
+	// std::string l;
+	// std::getline(input_file, l);
+	// if (l != "date | value") {
+	// 	std::cerr << BRED << "Error input file ! Header is not valid \"date | value\"." << std::endl; 
+	// 	return (1); }
+
+	
 
 	return (0); }
