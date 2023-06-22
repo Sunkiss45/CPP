@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 15:51:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/22 17:55:12 by ebarguil         ###   ########.fr       */
+/*   Created: 2023/06/22 16:52:38 by ebarguil          #+#    #+#             */
+/*   Updated: 2023/06/22 17:54:57 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
-#include "ft_color.hpp"
+#pragma once
 
-int	main(int ac, char **av) {
-	
-	if (ac != 2) {
-		std::cout << BRED << "Error in use ! ./RPN <input calculation>" << RESET << std::endl; 
-		return (1); }
+# include <iostream>
+# include <sstream>
+# include <string>
+# include <cstdlib>
 
-	ReversePolish ReversePolish(av[1]);
-	ReversePolish.parsingInput();
-	return (0);
-}
+class ReversePolish
+{
+	public:
+
+		ReversePolish(char *input);
+		~ReversePolish();
+
+		void	parsingInput();
+
+	private:
+
+		std::string	_input;
+
+		ReversePolish();
+		ReversePolish& operator=(ReversePolish& tocopy);
+		ReversePolish(ReversePolish const &tocopy);
+};

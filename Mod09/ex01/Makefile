@@ -6,7 +6,7 @@
 #    By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/10 13:54:45 by ebarguil          #+#    #+#              #
-#    Updated: 2023/06/22 15:49:26 by ebarguil         ###   ########.fr        #
+#    Updated: 2023/06/22 17:55:34 by ebarguil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ RM		=	/usr/bin/rm -rf
 vpath %.cpp srcs
 
 SRC		=	srcs/main.cpp \
+			srcs/RPN.cpp \
 
 OBJ		=	$(SRC:srcs/%.cpp=objs/%.o)
 DEP		=	$(SRC:srcs/%.cpp=objs/%.d)
