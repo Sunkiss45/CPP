@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:31:35 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/21 17:46:37 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/22 14:51:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fstream>
 # include <string>
 # include <map>
+# include <iomanip>
 
 class BitcoinExchange
 {
@@ -27,6 +28,7 @@ class BitcoinExchange
 
 		void	parsingData();
 		void	parsingInput(char *f);
+		void	printInput(const std::string line, const std::string date, const float nbitc);
 
 		std::string GetData();
 
@@ -96,6 +98,12 @@ class BitcoinExchange
 		{
 			virtual const char*	what() const throw() {
 				return ("Error: too large a number."); }
+		};
+
+		class	InputAncientDateError : public std::exception
+		{
+			virtual const char*	what() const throw() {
+				return ("Error: date is too ancient."); }
 		};
 
 	private:

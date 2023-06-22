@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:32:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/21 18:49:24 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:11:15 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	BitcoinExchange::parsingData() {
 	std::string	l;
 	std::getline(data_file, l);
 	if (l != "date,exchange_rate") {
-		throw(DataHeaderError()); }
+		throw (DataHeaderError()); }
 
 	while (std::getline(data_file, l)) {
 		std::stringstream rest(l);
@@ -89,6 +89,22 @@ void	BitcoinExchange::parsingData() {
 		this->_data[date] = val;
 	}
 
+	return;
+}
+
+void	BitcoinExchange::printInput(const std::string line, const std::string date, const float nbitc) {
+	std::map<std::string, float>::const_iterator it = _data.find(date);
+	if (it == _data.end()) {
+		std::map<std::string, float>::const_iterator l_it = _data.lower_bound(date);
+		if (l_it == _data.begin()) {
+			throw (InputAncientDateError());}
+		else if (l_it == _data.end()) {
+			--l_it;
+			std::cout << IYELLOW << "(Warning : date is in the future) " << RESET << BGREEN << line << " => " << PINK << l_it->second * nbitc << RESET << std::endl; }
+		else {
+			std::cout << BGREEN << line << " => " << PINK << l_it->second * nbitc << RESET << std::endl; } }
+	else {
+		std::cout << BGREEN << line << " => " << PINK << it->second * nbitc << RESET << std::endl; }
 	return;
 }
 
@@ -130,27 +146,29 @@ void	BitcoinExchange::parsingInput(char *f) {
 			value = l.substr(l.find(" | ") + 3);
 			std::stringstream valueS(value);
 			float	val;
-			int		sun = 0;
+			bool	valok = true;
 			std::string	end;
 			valueS >> val;
 			if (valueS.fail()) {
-				sun = 1; }
-			valueS >> val >> end;
+				valok = false; }
+			valueS >> end;
 
-			std::cout << BCYAN << "[" << val << "] - " << BGREEN << "[" << end << "]" << RESET << std::endl;
+			// std::cout << BCYAN << "[" << val << "] - " << BGREEN << "[" << end << "]" << RESET << std::endl;
 			
-			if ((sun == 1 && (!end.empty() || val == 0)) || !end.empty()) {
+			if (!valok || !end.empty()) {
 				er = 1;
 				throw (InputValueError()); }
 			else if (val < 0) {
 				throw (InputNegValueError()); }
 			else if (val > 1000) {
 				throw (InputBigValueError()); }
+			
+			this->printInput(l, date, val);
 		}
 		catch(const std::exception& e) {
-			std::cerr << BYELLOW << e.what();
+			std::cerr << ORANGE << e.what();
 			if (er == 1) {
-				std::cerr << l; 
+				std::cerr << RESET << YELLOW << l; 
 				er = 0; }
 			std::cerr << RESET << std::endl; }
 	}
