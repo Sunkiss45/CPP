@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/22 17:55:12 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/25 17:17:47 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,26 @@
 #include "ft_color.hpp"
 
 int	main(int ac, char **av) {
-	
+
 	if (ac != 2) {
 		std::cout << BRED << "Error in use ! ./RPN <input calculation>" << RESET << std::endl; 
 		return (1); }
 
 	ReversePolish ReversePolish(av[1]);
+
+	try {
 	ReversePolish.parsingInput();
+	}
+	catch(const std::exception& e) {
+		std::cerr << BRED << e.what() << RESET << std::endl;
+		return (1); }
+
+	try {
+	ReversePolish.calculation();
+	}
+	catch(const std::exception& e) {
+		std::cerr << BRED << e.what() << RESET << std::endl;
+		return (1); }
+
 	return (0);
 }

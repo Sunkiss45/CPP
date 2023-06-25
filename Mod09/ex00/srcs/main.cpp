@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:23:54 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/22 15:55:24 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/06/25 14:45:10 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av) {
 	catch(const std::exception& e) {
 		std::cerr << BRED << e.what() << RESET << std::endl;
 		return (1); }
-	
+
 	try {
 		BitcoinExchange.parsingInput(av[1]);
 	}
