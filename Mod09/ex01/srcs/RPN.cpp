@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 17:51:50 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/25 17:32:59 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:20:01 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ ReversePolish::ReversePolish(char *input) {
 
 ReversePolish::~ReversePolish() {}
 
+int	ReversePolish::GetNum() {
+	return (this->_number.top());
+}
+
 void ReversePolish::parsingInput() {
 
 	std::stringstream str(this->_input);
@@ -26,8 +30,6 @@ void ReversePolish::parsingInput() {
 
 	int num = 0;
 	int	tok = 0;
-	std::stack<int> snum;
-	std::stack<char>	stok;
 	while (1) {
 		std::string n;
 		str >> n;
@@ -41,62 +43,56 @@ void ReversePolish::parsingInput() {
 			// std::cout << ORANGE << "[" << a << "]" << RESET << std::endl;
 			if (n == "+" || n == "-" || n == "/" || n == "*") {
 				tok++;
-				stok.push(n.c_str()[0]);
+				calculation(n.c_str()[0]);
 				continue; }
 			else if (n != "0") {
 				throw(RPNError()); }
 			else {
 				num++;
-				snum.push(a); } }
+				this->_number.push(a); } }
 		else if (a < 0 || a > 9) {
 			throw(RPNError()); }
 		else {
 			num++;
-			snum.push(a); }
+			this->_number.push(a); }
 	}
 	// std::cout << BLUE << "num = " << num << RESET << " | " << CYAN << "tok = " << tok << RESET << std::endl;
 	if (num != tok + 1) {
 		throw(RPNError()); }
 
-	while (!snum.empty()) {
-		this->_number.push(snum.top());
-		snum.pop(); }
-	while (!stok.empty()) {
-		this->_token.push(stok.top());
-		stok.pop(); }
+	return;
+}
+
+void ReversePolish::calculation(char tok) {
+	if (this->_number.size() < 2) {
+		throw(RPNError()); }
+	int	two = this->_number.top();
+	this->_number.pop();
+	int one = this->_number.top();
+	this->_number.pop();
+
+	operant(tok, one, two);
 
 	return;
 }
 
-void ReversePolish::calculation() {
-	while (this->_number.size() > 1) {
-		int	one = this->_number.top();
-		this->_number.pop();
-		int two = this->_number.top();
-		this->_number.pop();
-		
-		char tok = this->_token.top();
-		this->_token.pop();
-
-		switch (tok) {
-			case '+':
-				this->_number.push(one + two);
-				break;
-			case '-':
-				this->_number.push(one - two);
-				break;
-			case '/':
-				if (one == 0 || two == 0) {
-					throw(RPNError()); }
-				this->_number.push(one / two);
-				break;
-			case '*':
-				this->_number.push(one * two);
-				break;
-			default:
-				throw(RPNError());
-		}
-	}
-	std::cout << BGREEN << this->_number.top() << RESET << std::endl;
+void ReversePolish::operant(char tok, int one, int two) {
+	switch (tok) {
+		case '+':
+			this->_number.push(one + two);
+			break;
+		case '-':
+			this->_number.push(one - two);
+			break;
+		case '/':
+			if (two == 0) {
+				throw(RPNError()); }
+			this->_number.push(one / two);
+			break;
+		case '*':
+			this->_number.push(one * two);
+			break;
+		default:
+			throw(RPNError()); }
 	return;
 }

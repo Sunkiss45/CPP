@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 16:52:38 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/25 16:53:15 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:11:47 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ class ReversePolish
 		~ReversePolish();
 
 		void	parsingInput();
-		void	calculation();
+
+		int		GetNum();
 
 		class	RPNError : public std::exception
 		{
@@ -38,8 +39,10 @@ class ReversePolish
 
 		std::string	_input;
 
+		void	calculation(char tok);
+		void	operant(char tok, int one, int two);
+
 		std::stack<int>			_number;
-		std::stack<char>	_token;
 
 		ReversePolish();
 		ReversePolish& operator=(ReversePolish& tocopy);

@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 15:51:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/25 17:17:47 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/07/01 15:11:30 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,7 @@ int	main(int ac, char **av) {
 		std::cerr << BRED << e.what() << RESET << std::endl;
 		return (1); }
 
-	try {
-	ReversePolish.calculation();
-	}
-	catch(const std::exception& e) {
-		std::cerr << BRED << e.what() << RESET << std::endl;
-		return (1); }
+	std::cout << BGREEN << ReversePolish.GetNum() << RESET << std::endl;
 
 	return (0);
 }
