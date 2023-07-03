@@ -6,7 +6,7 @@
 /*   By: ebarguil <ebarguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 16:32:58 by ebarguil          #+#    #+#             */
-/*   Updated: 2023/06/22 15:11:15 by ebarguil         ###   ########.fr       */
+/*   Updated: 2023/07/03 17:15:07 by ebarguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	BitcoinExchange::printInput(const std::string line, const std::string date,
 			--l_it;
 			std::cout << IYELLOW << "(Warning : date is in the future) " << RESET << BGREEN << line << " => " << PINK << l_it->second * nbitc << RESET << std::endl; }
 		else {
+			--l_it;
 			std::cout << BGREEN << line << " => " << PINK << l_it->second * nbitc << RESET << std::endl; } }
 	else {
 		std::cout << BGREEN << line << " => " << PINK << it->second * nbitc << RESET << std::endl; }
